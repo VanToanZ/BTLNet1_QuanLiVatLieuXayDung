@@ -1,0 +1,9 @@
+﻿<Application x:Class="BTL_QuanLiVatLieuXayDung.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung"
+             Startup="OnStartup">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

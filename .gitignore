@@ -1,0 +1,11 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea/
+node_modules/
+BTL-QuanLyVatLieuXayDung/Logs/
+/.vs/BTL-QuanLyVatLieuXayDung
+/.vs
+BTL-QuanLyVatLieuXayDung.sln.DotSettings.user

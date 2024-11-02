@@ -1,0 +1,36 @@
+﻿<Window x:Class="BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain.QuanLiVatLieuXayDungFormMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain"
+        mc:Ignorable="d"
+        Title="Phần mềm quản lí vật liệu xây dựng" Height="450" Width="800">
+    <Grid x:Name="quanLiVatLieuXayDung" Loaded="quanLiVatLieuXayDung_Load">
+        <Menu VerticalAlignment="Top" Height="44">
+            <MenuItem x:Name="txtThongTinTaiKhoan" Header="Thông tin tài khoản" Click="thongTinTaiKhoan_Click" Height="32">
+            </MenuItem>
+            <MenuItem x:Name="txtQuanLiTaiKhoan" Header="Quản lí tài khoản" Click="quanLiTaiKhoan_Click" Height="32">
+            </MenuItem>
+            <MenuItem x:Name="txtQuanLiKhoHang" Header="Quản lí kho hàng" Click="quanLiKhoHang_Click" Height="32">
+                <MenuItem Header="Vật liệu" Click="vatLieu_Click" Height="32">
+                </MenuItem>
+                <MenuItem Header="Loại vật liệu" Click="loaiVatLieu_Click" Height="32">
+                </MenuItem>
+                <MenuItem Header="Khu vực hàng" Click="khuVucHang_Click" Height="32">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="txtQuanLiDon" Header="Quản lí đơn" Click="quanLiDon_Click" Height="32">
+                <MenuItem Header="Đơn nhập" Click="donNhap_Click" Height="32">
+                </MenuItem>
+                <MenuItem Header="Hóa đơn xuất" Click="hoaDon_Click" Height="32">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="txtQuanLiBaoCao" Header="Quản lí báo cáo" Click="quanLiBaoCao_Click" Height="32">
+            </MenuItem>
+            <MenuItem x:Name="txtHeThong" Header="Hệ thống" Click="heThong_Click" Height="32">
+            </MenuItem>
+        </Menu>
+        <ContentControl x:Name="MainContent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+    </Grid>
+</Window>
