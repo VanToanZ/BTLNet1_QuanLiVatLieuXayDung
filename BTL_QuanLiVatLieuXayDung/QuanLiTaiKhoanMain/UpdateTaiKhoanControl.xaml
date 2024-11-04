@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain.UpdateTaiKhoanControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" d:DesignWidth="1078" Height="739">
+    <Grid Margin="40,40,40,91" Loaded="updateTaiKhoan_Load">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+            <TextBlock FontSize="20" FontWeight="Bold" Text="Cập nhật tài khoản" Margin="0,0,0,10"/>
+
+            <!-- Username -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Tên tài khoản:"/>
+                <TextBox Name="updateUsername" Width="400" MinWidth="200"/>
+            </StackPanel>
+
+            <!-- Full Name -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Họ và tên:"/>
+                <TextBox Name="updateFullname" Width="400" MinWidth="200"/>
+            </StackPanel>
+
+            <!-- Email -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Email:"/>
+                <TextBox Name="updateEmail" Width="400" MinWidth="200"/>
+            </StackPanel>
+
+            <!-- Address -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Địa chỉ:"/>
+                <TextBox Name="updateAddress" Width="400" MinWidth="200"/>
+            </StackPanel>
+
+            <!-- CCCD -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="CCCD:"/>
+                <TextBox Name="updateCccd" Width="400" MinWidth="200"/>
+            </StackPanel>
+
+            <!-- Password -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Mật khẩu:"/>
+                <PasswordBox Name="updateMatKhau" Width="400" MinWidth="200"/>
+            </StackPanel>
+
+            <!-- Role -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Quyền:"/>
+                <ComboBox Name="updateTkRole" Width="200">
+                    <ComboBoxItem Content="Quyền 1"/>
+                    <ComboBoxItem Content="Quyền 2"/>
+                    <ComboBoxItem Content="Quyền 3"/>
+                </ComboBox>
+            </StackPanel>
+
+            <!-- Image Upload -->
+            <StackPanel Orientation="Vertical" Margin="0,5">
+                <TextBlock Text="Ảnh đại diện:"/>
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="0,5" Width="150" Height="150">
+                    <Image Name="updateImageTK" Stretch="Uniform" />
+                </Border>
+                <Button Name="upLoad" Content="Tải ảnh" Click="UpLoad_Click" Width="100" Margin="0,3,0,0"/>
+                <!-- Adjusted margin -->
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="12,0,0,10">
+            <Button Name="updateTaiKhoan" Content="Update" Click="updateTaiKhoan_Click" Margin="5" Width="100"/>
+            <Button Name="Reset" Content="Reset" Click="Reset_Click" Margin="5" Width="100"/>
+            <Button Name="Exit" Content="Thoát" Click="Exit_Click" Margin="5" Width="100"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

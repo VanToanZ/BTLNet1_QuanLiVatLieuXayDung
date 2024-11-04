@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain"
-             mc:Ignorable="d" Height="717" Width="1000">
-    <Grid x:Name="quanLiTaiKhoan" Margin="30" Loaded="quanLiTaiKhoan_Load">
+             mc:Ignorable="d" Height="Auto" Width="Auto">
+    <Grid x:Name="quanLiTaiKhoan" Margin="40" Loaded="quanLiTaiKhoan_Load">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -35,7 +35,7 @@
         <DataGrid x:Name="dataTaiKhoan" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 
                   Margin="0,10,0,10">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="*"/>
+                <DataGridTextColumn Header="Id" Visibility="Collapsed" Binding="{Binding Id}" Width="*"/>
                 <DataGridTextColumn Header="Tên tài khoản" Binding="{Binding UserName}" Width="*"/>
                 <DataGridTextColumn Header="Tên đầy đủ" Binding="{Binding FullName}" Width="*"/>
                 <DataGridTextColumn Header="Quyền" Binding="{Binding Role}" Width="*"/>

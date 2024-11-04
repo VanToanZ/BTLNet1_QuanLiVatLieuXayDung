@@ -212,5 +212,17 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
             userControl.VerticalAlignment = VerticalAlignment.Stretch;
             this.Content = userControl;
         }
+
+        private void Reset_Click(object sender, RoutedEventArgs e)
+        {
+            createUsername.Text = string.Empty;
+            createFullname.Text = string.Empty;
+            createAddress.Text = string.Empty;
+            createEmail.Text = string.Empty;
+            createMatKhau.Text = string.Empty;
+            createCccd.Text = string.Empty;
+            createTkRole.SelectedIndex = -1;
+            createImageTK.Source = null;
+        }
     }
 }

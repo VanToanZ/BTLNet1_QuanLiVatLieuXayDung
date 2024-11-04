@@ -16,21 +16,21 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string NameTypeVatLieu { get; set; }
+        public string NameTypeVatLieu { get; set; } = null!;
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string CodeTypeVatLieu { get; set; }
+        public string CodeTypeVatLieu { get; set; } = null!;
         [Required]
         [Column(TypeName = "text")]
-        public string UrlImage { get; set; }
+        public string UrlImage { get; set; } = null!;
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string CreateBy { get; set; }
+        public string CreateBy { get; set; } = null!;
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string UpdateBy { get; set; }
+        public string? UpdateBy { get; set; }
         public virtual ICollection<VatLieu> VatLieus { get; set; }
     }
 }

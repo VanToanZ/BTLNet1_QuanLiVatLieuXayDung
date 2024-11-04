@@ -1,10 +1,14 @@
-﻿using BTL_QuanLyVatLieuXayDung.Data.Common;
+﻿using BTL_QuanLyVatLieuXayDung.Data;
+using BTL_QuanLyVatLieuXayDung.Data.Common;
 using BTL_QuanLyVatLieuXayDung.Data.Dto;
 using BTL_QuanLyVatLieuXayDung.Data.Enum;
 using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
+using MessageBox = System.Windows.MessageBox;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
 {
@@ -91,30 +95,38 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
            LoadUserControl(new CreateTaiKhoanControl(_userRepository));
         }
 
-        private void sua_Click(object sender, RoutedEventArgs e)
+        private async void sua_Click(object sender, RoutedEventArgs e)
         {
-            //if (dataTaiKhoan.SelectedItem is UserDto selectedUser)
-            //{
-            //    LoadUserControl(new UpdateTaiKhoanControl(selectedUser, selectedUser.Id, _userRepository));
-            //}
+            if (dataTaiKhoan.SelectedItem is UserDto selectedUser)
+            {
+                var user = await _userRepository.GetByIdAsync(selectedUser.Id);
+                if (user != null)
+                {
+                    LoadUserControl(new UpdateTaiKhoanControl(user, user.Id, _userRepository));
+                }
+            }
         }
 
-        private void xoa_Click(object sender, RoutedEventArgs e)
+        private async void xoa_Click(object sender, RoutedEventArgs e)
         {
-            //if (dataTaiKhoan.SelectedItem is UserDto selectedUser)
-            //{
-            //    var result = MessageBox.Show("Bạn có thật sự muốn xóa tài khoản này?", "Thông báo", MessageBoxButton.OKCancel);
-            //    if (result == MessageBoxResult.OK)
-            //    {
-            //        _userRepository.Delete(selectedUser);
-            //        await _userRepository.SaveDbSetAsync();
-            //        MessageBox.Show("Xóa tài khoản thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            //        await LoadData();
-            //    }
-            //}
+            if (dataTaiKhoan.SelectedItem is UserDto selectedUser)
+            {
+                var user = await _userRepository.GetByIdAsync(selectedUser.Id);
+                if (user != null)
+                {
+                    var result = MessageBox.Show("Bạn có thật sự muốn xóa tài khoản này?", "Thông báo", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK)
+                    {
+                        _userRepository.Delete(user);
+                        await _userRepository.SaveDbSetAsync();
+                        MessageBox.Show("Xóa tài khoản thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        await LoadData();
+                    }
+                }
+            }
         }
 
-        private void LoadUserControl(UserControl userControl)
+        private void LoadUserControl<T>(T userControl)
         {
             // Clear existing controls
             this.Content = userControl; // Load the new user control
@@ -127,7 +139,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
 
         private void reset_click(object sender, RoutedEventArgs e)
         {
-            LoadUserControl(this);
+            LoadUserControl(new QuanLiTaiKhoanMainControl(_userRepository));
         }
     }
 }

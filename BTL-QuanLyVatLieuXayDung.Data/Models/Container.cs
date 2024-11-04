@@ -1,6 +1,4 @@
 ﻿using BTL_QuanLyVatLieuXayDung.Data.Common;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,17 +14,17 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         [Required]
         [StringLength(50)]
         [Column(TypeName = "nvarchar")]
-        public string NameContainer { get; set; }
+        public string NameContainer { get; set; } = null!;
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string CodeContainer { get; set; }
+        public string CodeContainer { get; set; } = null!;
         [Required]
         [Column(TypeName = "text")]
-        public string UrlImage{ get; set; }
+        public string UrlImage{ get; set; } = null!;
         [StringLength(255)]
         [Column(TypeName = "nvarchar")]
-        public string DescriptionContainer { get; set; }
+        public string? DescriptionContainer { get; set; }
 
         public virtual ICollection<VatLieu> VatLieus { get; set; }
     }

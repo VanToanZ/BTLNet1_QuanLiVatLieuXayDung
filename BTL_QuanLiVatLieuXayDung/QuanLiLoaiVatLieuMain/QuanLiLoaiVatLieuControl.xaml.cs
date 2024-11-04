@@ -1,0 +1,144 @@
+﻿using BTL_QuanLyVatLieuXayDung.Data.Dto;
+using BTL_QuanLyVatLieuXayDung.Data.Enum;
+using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
+{
+    /// <summary>
+    /// Interaction logic for QuanLiLoaiVatLieuControl.xaml
+    /// </summary>
+    public partial class QuanLiLoaiVatLieuControl : UserControl
+    {
+        private readonly ITypeVatLieuRepository _typeVatLieuRepository;
+        private readonly IVatLieuRepository _vatLieuRepository;
+        private readonly IContainerRepository _containerRepository;
+        public QuanLiLoaiVatLieuControl(
+             ITypeVatLieuRepository typeVatLieuRepository,
+             IVatLieuRepository vatLieuRepository,
+             IContainerRepository containerRepository)
+        {
+            InitializeComponent();
+            _typeVatLieuRepository = typeVatLieuRepository;
+            _vatLieuRepository = vatLieuRepository;
+            _containerRepository = containerRepository;
+        }
+
+        private void CreateMaterial_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            LoadUserControl(new CreateTypeVatLieuControl(_typeVatLieuRepository, _vatLieuRepository, _containerRepository));
+        }
+        private async void QuanLiTypeVatLieu_Load(object sender, RoutedEventArgs e)
+        {
+            await LoadData();
+        }
+
+        private async Task LoadData()
+        {
+            var data = await GetData();
+            dataTypeVatLieu.ItemsSource = data;
+        }
+        private async Task<List<TypeVatLieuDto>> GetData()
+        {
+            var typeVatLieus = await _typeVatLieuRepository
+                .FindByCondition(x => x.Status != nameof(EStatus.Delete))
+                .ToListAsync();
+            var typeVatLieuDtos = typeVatLieus.Select(x => new TypeVatLieuDto()
+            {
+                Id = x.Id,
+                NameTypeVatLieu = x.NameTypeVatLieu,
+                CodeTypeVatLieu = x.CodeTypeVatLieu,
+                Picture = File.ReadAllBytes(x.UrlImage),
+                CreateBy = x.CreateBy,
+                Status = x.Status
+            }).ToList();
+            return typeVatLieuDtos;
+        }
+        private async void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataTypeVatLieu.SelectedItem is TypeVatLieuDto selectedUser)
+            {
+                var typeVatLieu = await _typeVatLieuRepository.GetByIdAsync(selectedUser.Id);
+                if (typeVatLieu != null)
+                {
+                    LoadUserControl(new UpdateTypeVatLieuControl(typeVatLieu, typeVatLieu.Id, _typeVatLieuRepository, _vatLieuRepository, _containerRepository));
+                }
+            }
+        }
+
+        private async void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataTypeVatLieu.SelectedItem is TypeVatLieuDto selectedContainer)
+            {
+                var vatLieu = await _vatLieuRepository.ExistVatLieuByTypeContainerId(selectedContainer.Id);
+                if (vatLieu)
+                {
+                    MessageBox.Show("Không được xóa loại vật liệu này vì đang được sử dụng.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                var typeVatLieu = await _typeVatLieuRepository.GetByIdAsync(selectedContainer.Id);
+                if (typeVatLieu != null)
+                {
+                    var result = MessageBox.Show("Bạn có thật sự muốn xóa loại vật liệu này?", "Thông báo", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK)
+                    {
+                        _typeVatLieuRepository.Delete(typeVatLieu);
+                        await _typeVatLieuRepository.SaveDbSetAsync();
+                        MessageBox.Show("Xóa loại vật liệu thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                        await LoadData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Xóa khu vực không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+            }
+        }
+
+        private async void Search_Click(object sender, RoutedEventArgs e)
+        {
+            var sql = _typeVatLieuRepository
+               .FindByCondition(x => !x.Status.Equals(nameof(EStatus.Delete)));
+            string name = searchNameTypeVatLieu.Text;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                sql = sql.Where(x => x.NameTypeVatLieu.Contains(name));
+            }
+            string code = searchMaLoaiVatLieu.Text;
+            if (!string.IsNullOrEmpty(code))
+            {
+                sql = sql.Where(x => x.CodeTypeVatLieu.Contains(code));
+            }
+            var typeVatLieus = await sql.ToListAsync();
+            var typeLoaiVatLieuDtos = typeVatLieus.Select(x => new TypeVatLieuDto()
+            {
+                Id = x.Id,
+                NameTypeVatLieu = x.NameTypeVatLieu,
+                CodeTypeVatLieu = x.CodeTypeVatLieu,
+                CreateBy = x.CreateBy,
+                Picture = File.ReadAllBytes(x.UrlImage),
+                Status = x.Status,
+            }).ToList();
+            dataTypeVatLieu.ItemsSource = typeLoaiVatLieuDtos;
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            LoadUserControl(new QuanLiLoaiVatLieuControl(_typeVatLieuRepository, _vatLieuRepository, _containerRepository));
+        }
+        private void LoadUserControl<T>(T userControl)
+        {
+            // Clear existing controls
+            this.Content = userControl; // Load the new user control
+        }
+    }
+}

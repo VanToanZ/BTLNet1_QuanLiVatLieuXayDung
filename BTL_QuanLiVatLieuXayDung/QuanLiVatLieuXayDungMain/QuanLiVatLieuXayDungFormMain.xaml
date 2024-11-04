@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="Phần mềm quản lí vật liệu xây dựng" Height="450" Width="800">
     <Grid x:Name="quanLiVatLieuXayDung" Loaded="quanLiVatLieuXayDung_Load">
-        <Menu VerticalAlignment="Top" Height="44">
-            <MenuItem x:Name="txtThongTinTaiKhoan" Header="Thông tin tài khoản" Click="thongTinTaiKhoan_Click" Height="32">
+        <Menu VerticalAlignment="Top" Height="30">
+            <MenuItem x:Name="txtThongTinTaiKhoan" Header="Tài khoản" Click="thongTinTaiKhoan_Click" Height="32">
+                <MenuItem Header="Đăng xuất" Click="Logout_Click" Height="32">
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="txtQuanLiTaiKhoan" Header="Quản lí tài khoản" Click="quanLiTaiKhoan_Click" Height="32">
             </MenuItem>

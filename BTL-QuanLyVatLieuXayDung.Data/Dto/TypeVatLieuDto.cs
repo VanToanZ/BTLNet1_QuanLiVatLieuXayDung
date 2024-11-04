@@ -4,11 +4,11 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Dto
 {
     public class TypeVatLieuDto
     {
-        public string Id { get; set; }
-        public string NameTypeVatLieu { get; set; }
-        public string CodeTypeVatLieu { get; set; }
-        public ImageFileMachine Picture { get; set; }
-        public string CreateBy { get; set; }
-        public string Status { get; set; }
+        public string Id { get; set; } = null!;
+        public string NameTypeVatLieu { get; set; } = null!;
+        public string CodeTypeVatLieu { get; set; } = null!;
+        public byte[] Picture { get; set; } = null!;
+        public string CreateBy { get; set; } = null!;
+        public string Status { get; set; } = null!;
     }
 }

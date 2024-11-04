@@ -1,4 +1,6 @@
-﻿using BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain;
+﻿using BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain;
+using BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain;
+using BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain;
 using BTL_QuanLyVatLieuXayDung.Data;
 using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
 using System.Windows;
@@ -48,6 +50,19 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
         {
             LoadUserControl(new ThongTinTaiKhoanForm(_user));
         }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            var login = new MainWindow(
+                    _userRepository,
+                    _typeVatLieuRepository,
+                    _vatLieuRepository,
+                    _containerRepository,
+                    _nhapRepostiory,
+                    _hoaDonRepository,
+                    _detailHoaDonRepostiory);
+            this.Hide();
+            login.Show();
+        }
         private void thongTinTaiKhoan_Click(object sender, RoutedEventArgs e)
         {
             LoadUserControl(new ThongTinTaiKhoanForm(_user));
@@ -62,11 +77,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
         }
         private void khuVucHang_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadUserControl(new QuanLiKhuVucHangControl(_containerRepository, _vatLieuRepository));
         }
         private void loaiVatLieu_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadUserControl(new QuanLiLoaiVatLieuControl(_typeVatLieuRepository,_vatLieuRepository ,_containerRepository)); ;
         }
         private void vatLieu_Click(object sender, RoutedEventArgs e)
         {
