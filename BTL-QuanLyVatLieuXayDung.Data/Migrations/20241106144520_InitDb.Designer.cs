@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
 {
     [DbContext(typeof(QuanLyVatLieuXayDungDbContext))]
-    [Migration("20241102141909_InitDb")]
+    [Migration("20241106144520_InitDb")]
     partial class InitDb
     {
         /// <inheritdoc />
@@ -66,7 +66,6 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<string>("DescriptionContainer")
-                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar");
 
@@ -98,8 +97,8 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<float>("Quanity")
-                        .HasColumnType("real");
+                    b.Property<double>("Quanity")
+                        .HasColumnType("float");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -199,7 +198,6 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar");
 
@@ -240,7 +238,6 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar");
 
@@ -374,7 +371,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "01JBPKWZKKWHK6WA0VD90KYVPC",
+                            Id = "01JC0YZTBB78RPR00F0XS2DJ8Y",
                             Address = "Adress",
                             CCCD = "1234567890",
                             Email = "Address@email.com",

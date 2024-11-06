@@ -10,5 +10,6 @@
         public string Address { get; set; } = null!;
         public string CCCD { get; set; } = null!;
         public string Status { get; set; } = null!;
+        public bool IsChecked { get; set; }
     }
 }

@@ -41,12 +41,14 @@ namespace BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories
         public async Task<bool> ExistVatLieuByTypeVatLieuId(string Id)
         {
             return await _context.VatLieu
-                .AnyAsync(x => x.TypeVatLieuId.Equals(Id));
+                .AnyAsync(x => x.TypeVatLieuId.Equals(Id)
+                               && x.Status == nameof(EStatus.Active));
         }
         public async Task<bool> ExistVatLieuByTypeContainerId(string Id)
         {
             return await _context.VatLieu
-                .AnyAsync(x => x.ContainerId.Equals(Id));
+                .AnyAsync(x => x.ContainerId.Equals(Id) 
+                               && x.Status == nameof(EStatus.Active));
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using BTL_QuanLyVatLieuXayDung.Data;
 using BTL_QuanLyVatLieuXayDung.Data.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -165,7 +166,19 @@ namespace BTL_QuanLyVatLieuXayDung.Infrastructure.Common
 
             _dbSet.UpdateRange(listEntity);
         }
-
+        public IDbContextTransaction BeginTransaction()
+        {
+            return _context.Database.BeginTransaction();
+        }
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _context.Database.BeginTransactionAsync();
+        }
+        public async Task RollbackAsync()
+        {
+            var transaction = await _context.Database.BeginTransactionAsync();
+            await transaction.RollbackAsync();
+        }
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);

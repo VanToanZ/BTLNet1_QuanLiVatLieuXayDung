@@ -18,7 +18,7 @@ namespace BTL_QuanLiVatLieuXayDung
         private ServiceProvider serviceProvider;
         public App()
         {
-            const string connectionString = "Data Source=MSI;Initial Catalog=QuanLyVatLieuXayDung_V4;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
+            const string connectionString = "Data Source=MSI;Initial Catalog=QuanLyVatLieuXayDung_V5;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
             AppHost = Host.CreateDefaultBuilder()
                  .ConfigureLogging(logging =>
                  {
@@ -49,69 +49,10 @@ namespace BTL_QuanLiVatLieuXayDung
                  }).Build();
         }
 
-        //protected override void OnStartup(StartupEventArgs e)
-        //{
-        //    var mainWindow = serviceProvider.GetService<MainWindow>();
-        //    mainWindow!.Show();
-        //    //await AppHost!.StartAsync();
-        //    //var startUpForm = AppHost.Services.GetRequiredService<MainWindow>();
-        //    //startUpForm.Show();
-        //    //base.OnStartup(e);
-        //}
-        //protected override async void OnExit(ExitEventArgs e)
-        //{
-        //    await AppHost!.StopAsync();
-        //    base.OnExit(e);
-        //}
-
         private void OnStartup(object sender, StartupEventArgs e)
         {
             var startUpForm = AppHost!.Services.GetRequiredService<MainWindow>();
             startUpForm.Show();
-        }
-        //const string connectionString = "Data Source=MSI;Initial Catalog=QuanLyVatLieuXayDung_V4;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
-        //private ServiceProvider serviceProvider;
-        //public App()
-        //{
-        //    ServiceCollection services = new ServiceCollection();
-        //    ConfigureServices(services);
-        //    serviceProvider = services.BuildServiceProvider();
-        //}
-        //private void ConfigureServices(ServiceCollection services)
-        //{
-        //    services.AddDbContext<QuanLyVatLieuXayDungDbContext>(options =>
-        //                {
-        //                    options.UseSqlServer(connectionString, builder =>
-        //                        builder.MigrationsAssembly(typeof(QuanLyVatLieuXayDungDbContext).Assembly.FullName));
-        //                });
-        //    services.AddScoped<IUserRepository, UserRepository>();
-        //    services.AddScoped<ITypeVatLieuRepository, TypeVatLieuRepository>();
-        //    services.AddScoped<IVatLieuRepository, VatLieuRepository>();
-        //    services.AddScoped<IContainerRepository, ContainerRepository>();
-        //    services.AddScoped<INhapRepostiory, NhapRepostiory>();
-        //    services.AddScoped<IHoaDonRepository, HoaDonRepository>();
-        //    services.AddScoped<IDetailHoaDonRepostiory, DetailHoaDonRepostiory>();
-        //    services.AddSingleton<MainWindow>();
-        //}
-        //private void OnStartup(object sender, StartupEventArgs e)
-        //{
-        //        var userAdd = new User()
-        //        {
-        //            UserName = "admin",
-        //            FullName = "Admin",
-        //            Password = "123",
-        //            Address = "Adress",
-        //            CCCD = "1234567890",
-        //            Email = "Address@email.com",
-        //            Role = nameof(ETypeUser.Admin),
-        //            Status = nameof(EStatus.Active),
-
-        //        };
-        //        context.User.Add(userAdd);
-        //        context.SaveChanges();
-        //    }
-        //    var mainWindow = serviceProvider.GetService<MainWindow>();
-        //    mainWindow.Show();
-        //}
+        }       
     }
 }

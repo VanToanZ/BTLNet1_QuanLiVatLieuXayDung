@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using System.Linq.Expressions;
 
 namespace BTL_QuanLyVatLieuXayDung.Data.Infrastructure
 {
@@ -28,6 +29,9 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Infrastructure
         void UpdateRange(IEnumerable<T> entities);
         void Delete(T entity);
         void RemoveRange(IEnumerable<T> entities);
-        Task SaveDbSetAsync(CancellationToken cancellationToken = default);       
+        Task SaveDbSetAsync(CancellationToken cancellationToken = default);
+        Task<IDbContextTransaction> BeginTransactionAsync();
+        IDbContextTransaction BeginTransaction();
+        Task RollbackAsync();
     }
 }

@@ -8,5 +8,6 @@
         public string? DescriptionContainer { get; set; }
         public byte[] Picture { get; set; } = null!;
         public string Status { get; set; } = null!;
+        public bool IsChecked { get; set; }
     }
 }

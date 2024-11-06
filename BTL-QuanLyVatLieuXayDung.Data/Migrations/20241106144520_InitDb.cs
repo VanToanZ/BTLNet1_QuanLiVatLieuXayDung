@@ -34,7 +34,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     NameContainer = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CodeContainer = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     UrlImage = table.Column<string>(type: "text", nullable: false),
-                    DescriptionContainer = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    DescriptionContainer = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -70,7 +70,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     CodeTypeVatLieu = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     UrlImage = table.Column<string>(type: "text", nullable: false),
                     CreateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    UpdateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    UpdateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -139,7 +139,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Quanity = table.Column<float>(type: "real", nullable: false),
+                    Quanity = table.Column<double>(type: "float", nullable: false),
                     HoaDonId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     VatLieuId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     TotalMoney = table.Column<double>(type: "float", nullable: false),
@@ -173,7 +173,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     TotalMoney = table.Column<double>(type: "float", nullable: false),
                     CreateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    UpdateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
                     UpdateAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
@@ -191,7 +191,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
             migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "Id", "Address", "CCCD", "Email", "FullName", "Password", "Role", "Status", "UrlImage", "UserName" },
-                values: new object[] { "01JBPKWZKKWHK6WA0VD90KYVPC", "Adress", "1234567890", "Address@email.com", "Admin", "123", "Admin", "Active", null, "admin" });
+                values: new object[] { "01JC0YZTBB78RPR00F0XS2DJ8Y", "Adress", "1234567890", "Address@email.com", "Admin", "123", "Admin", "Active", null, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_DetailHoaDon_HoaDonId",

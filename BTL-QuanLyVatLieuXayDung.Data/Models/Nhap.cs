@@ -28,7 +28,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         public DateTime CreateAt { get; set; } = DateTime.Now;
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string UpdateBy { get; set; }
+        public string? UpdateBy { get; set; }
         public DateTime? UpdateAt { get; set; }
     }
 }

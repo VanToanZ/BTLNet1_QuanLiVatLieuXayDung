@@ -51,6 +51,16 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="*"/>
+                <DataGridCheckBoxColumn Header="Cập nhật trạng thái" 
+                                Binding="{Binding IsChecked}" 
+                                Width="100">
+                    <DataGridCheckBoxColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <EventSetter Event="PreviewMouseUp" Handler="CheckBox_PreviewMouseUp"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.CellStyle>
+                </DataGridCheckBoxColumn>
+
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

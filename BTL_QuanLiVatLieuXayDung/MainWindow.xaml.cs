@@ -39,7 +39,7 @@ namespace BTL_QuanLiVatLieuXayDung
         private async void login_Click(object sender, RoutedEventArgs e)
         {
             string username = txtUsername.Text;
-            string passWord = txtPassword.Text;
+            string passWord = txtPassword.Password;
             var acount = await _userRepository.GetAccount(username, passWord);
             if (acount != null)
             {
@@ -64,6 +64,14 @@ namespace BTL_QuanLiVatLieuXayDung
                  "Lỗi đăng nhập",
                  MessageBoxButton.OK,
                  MessageBoxImage.Error);
+            }
+        }
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có thật sự muốn xóa khu vực này?", "Thông báo", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                Application.Current.Shutdown(); // Đóng ứng dụng
             }
         }
     }

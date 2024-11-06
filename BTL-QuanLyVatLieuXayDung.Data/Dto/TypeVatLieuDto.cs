@@ -10,5 +10,6 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Dto
         public byte[] Picture { get; set; } = null!;
         public string CreateBy { get; set; } = null!;
         public string Status { get; set; } = null!;
+        public bool IsChecked { get; set; }
     }
 }

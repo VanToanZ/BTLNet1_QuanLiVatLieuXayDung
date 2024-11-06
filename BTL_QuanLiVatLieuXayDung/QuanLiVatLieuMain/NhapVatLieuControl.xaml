@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain.NhapVatLieuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <Grid Margin="20" Loaded="CreateNhapVatLieu_Load">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- User Input Fields -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <StackPanel Margin="0,10">
+                <Label Content="Tên vật liệu:" />
+                <TextBox IsReadOnly="True" Name="createNameMaterial" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <Label Content="Giá nhập:" />
+                <TextBox Name="createPrice" PreviewTextInput ="CreatePrice_PreviewTextInput" TextChanged="createPrice_TextChanged" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <Label Content="Số lượng:" />
+                <TextBox Name="createQuantity" PreviewTextInput ="CreateQuantity_PreviewTextInput" TextChanged="createQuantity_TextChanged_1" />
+            </StackPanel>
+            <StackPanel Margin="0,10">
+                <Label Content="Tổng tiền:" />
+                <TextBox Name="createTotalMoney" IsReadOnly="True" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Control Buttons -->
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Name="createButton" Content="Create" Click="CreateButton_Click" Width="100" Height="30" Margin="10" />
+            <Button Name="Reset" Content="Reset" Click="Reset_Click" Width="100" Height="30" Margin="10" />
+            <Button Name="exitButton" Content="Thoát" Click="ExitButton_Click" Width="100" Height="30" Margin="10" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -25,6 +25,9 @@
     <Compile Update="QuanLiLoaiVatLieuMain\UpdateTypeVatLieuControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="QuanLiNhapVatLieuMain\QuanLiNhapVatLieuMainControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="QuanLiTaiKhoanMain\CreateTaiKhoanControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,7 +40,28 @@
     <Compile Update="QuanLiTaiKhoanMain\UpdateTaiKhoanControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="QuanLiVatLieuMain\CreateVatLieuControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QuanLiVatLieuMain\NhapVatLieuControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QuanLiVatLieuMain\QuanLiVatLieuMainControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QuanLiVatLieuMain\UpdateVatLieuControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QuanLiVatLieuMain\XuatVatLieuControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="QuanLiVatLieuXayDungMain\QuanLiVatLieuXayDungFormMain.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QuanLiXuatVatLieuMain\DetailHoaDonControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QuanLiXuatVatLieuMain\QuanLiXuatVatLieuMainControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -63,6 +87,9 @@
     <Page Update="QuanLiLoaiVatLieuMain\UpdateTypeVatLieuControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="QuanLiNhapVatLieuMain\QuanLiNhapVatLieuMainControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="QuanLiTaiKhoanMain\CreateTaiKhoanControl.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -75,7 +102,28 @@
     <Page Update="QuanLiTaiKhoanMain\UpdateTaiKhoanControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="QuanLiVatLieuMain\CreateVatLieuControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="QuanLiVatLieuMain\NhapVatLieuControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="QuanLiVatLieuMain\QuanLiVatLieuMainControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="QuanLiVatLieuMain\UpdateVatLieuControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="QuanLiVatLieuMain\XuatVatLieuControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="QuanLiVatLieuXayDungMain\QuanLiVatLieuXayDungFormMain.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="QuanLiXuatVatLieuMain\DetailHoaDonControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="QuanLiXuatVatLieuMain\QuanLiXuatVatLieuMainControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

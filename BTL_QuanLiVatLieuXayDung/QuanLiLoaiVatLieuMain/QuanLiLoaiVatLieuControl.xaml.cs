@@ -1,4 +1,5 @@
-﻿using BTL_QuanLyVatLieuXayDung.Data.Dto;
+﻿using BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain;
+using BTL_QuanLyVatLieuXayDung.Data.Dto;
 using BTL_QuanLyVatLieuXayDung.Data.Enum;
 using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -27,8 +28,25 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
             _containerRepository = containerRepository;
         }
 
-        private void CreateMaterial_Click(object sender, RoutedEventArgs e)
+        private async void CreateMaterial_Click(object sender, RoutedEventArgs e)
         {
+            if (dataTypeVatLieu.SelectedItem is TypeVatLieuDto selectedTypeVatLieu)
+            {
+                var containers = await _containerRepository
+                    .FindByCondition(x => x.Status.Equals(nameof(EStatus.Active)))
+                    .AnyAsync();
+                if (!containers)
+                {
+                    MessageBox.Show("Chưa có khu vực để tạo vật liệu.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (selectedTypeVatLieu.Status.Equals(nameof(EStatus.Inactive)))
+                {
+                    MessageBox.Show("Loại vật liệu đang không hoạt động.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                LoadUserControl(new CreateVatLieuControl(selectedTypeVatLieu.Id, _containerRepository, _vatLieuRepository, _typeVatLieuRepository));
+            }
 
         }
 
@@ -58,7 +76,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
                 CodeTypeVatLieu = x.CodeTypeVatLieu,
                 Picture = File.ReadAllBytes(x.UrlImage),
                 CreateBy = x.CreateBy,
-                Status = x.Status
+                Status = x.Status,
+                IsChecked = x.Status.Equals(nameof(EStatus.Active)) ? true : false,
             }).ToList();
             return typeVatLieuDtos;
         }
@@ -74,6 +93,42 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
             }
         }
 
+        private async void CheckBox_PreviewMouseUp(object sender, RoutedEventArgs e)
+        {
+            // Xử lý khi người dùng nhấn vào checkbox
+            var dataGridCell = sender as DataGridCell;
+            if (dataGridCell != null)
+            {
+                var checkBox = dataGridCell.Content as CheckBox;
+                if (checkBox != null)
+                {
+                    var typeVatLieuDto = dataGridCell.DataContext as TypeVatLieuDto;
+                    var vatLieu = await _vatLieuRepository.ExistVatLieuByTypeVatLieuId(typeVatLieuDto!.Id);
+                    if (vatLieu)
+                    {
+                        MessageBox.Show("Không thay đổi được trạng thái loại vật liệu này vì đang được sử dụng.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    var typeVatLieu = await _typeVatLieuRepository.GetByIdAsync(typeVatLieuDto!.Id);
+                    // Làm gì đó khi checkbox được click
+                    
+                    bool isChecked = !typeVatLieuDto.IsChecked;
+                    if (isChecked)
+                    {
+                        typeVatLieu!.Status = nameof(EStatus.Active);
+                        _typeVatLieuRepository.Update(typeVatLieu);
+                    }
+                    else
+                    {
+                        typeVatLieu!.Status = nameof(EStatus.Inactive);
+                        _typeVatLieuRepository.Update(typeVatLieu);
+                    }
+                    await _typeVatLieuRepository.SaveDbSetAsync();
+                    await LoadData();
+                    // Cập nhật trạng thái hoặc xử lý logic khác
+                }
+            }
+        }
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
             if (dataTypeVatLieu.SelectedItem is TypeVatLieuDto selectedContainer)
@@ -127,6 +182,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
                 CreateBy = x.CreateBy,
                 Picture = File.ReadAllBytes(x.UrlImage),
                 Status = x.Status,
+                IsChecked = x.Status.Equals(nameof(EStatus.Active)) ? true : false,
             }).ToList();
             dataTypeVatLieu.ItemsSource = typeLoaiVatLieuDtos;
         }

@@ -94,8 +94,8 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<float>("Quanity")
-                        .HasColumnType("real");
+                    b.Property<double>("Quanity")
+                        .HasColumnType("float");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -195,7 +195,6 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UpdateBy")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar");
 
@@ -369,7 +368,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "01JBVW765HM17YYHJ3GJ0N57G5",
+                            Id = "01JC0YZTBB78RPR00F0XS2DJ8Y",
                             Address = "Adress",
                             CCCD = "1234567890",
                             Email = "Address@email.com",

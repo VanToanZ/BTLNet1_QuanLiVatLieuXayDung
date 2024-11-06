@@ -15,17 +15,17 @@
             <MenuItem x:Name="txtQuanLiTaiKhoan" Header="Quản lí tài khoản" Click="quanLiTaiKhoan_Click" Height="32">
             </MenuItem>
             <MenuItem x:Name="txtQuanLiKhoHang" Header="Quản lí kho hàng" Click="quanLiKhoHang_Click" Height="32">
-                <MenuItem Header="Vật liệu" Click="vatLieu_Click" Height="32">
+                <MenuItem x:Name ="txtQuanLiVatLieu"  Header="Vật liệu" Click="vatLieu_Click" Height="32">
                 </MenuItem>
-                <MenuItem Header="Loại vật liệu" Click="loaiVatLieu_Click" Height="32">
+                <MenuItem  x:Name ="txtQuanLiLoaiVatLieu" Header="Loại vật liệu" Click="loaiVatLieu_Click" Height="32">
                 </MenuItem>
-                <MenuItem Header="Khu vực hàng" Click="khuVucHang_Click" Height="32">
+                <MenuItem x:Name ="txtQuanLiKhuVuc" Header="Khu vực hàng" Click="khuVucHang_Click" Height="32">
                 </MenuItem>
             </MenuItem>
             <MenuItem x:Name="txtQuanLiDon" Header="Quản lí đơn" Click="quanLiDon_Click" Height="32">
-                <MenuItem Header="Đơn nhập" Click="donNhap_Click" Height="32">
+                <MenuItem x:Name ="txtQuanLiNhap" Header="Đơn nhập" Click="donNhap_Click" Height="32">
                 </MenuItem>
-                <MenuItem Header="Hóa đơn xuất" Click="hoaDon_Click" Height="32">
+                <MenuItem x:Name ="txtQuanLiXuat" Header="Hóa đơn xuất" Click="hoaDon_Click" Height="32">
                 </MenuItem>
             </MenuItem>
             <MenuItem x:Name="txtQuanLiBaoCao" Header="Quản lí báo cáo" Click="quanLiBaoCao_Click" Height="32">

@@ -11,7 +11,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         {
             Id = Ulid.NewUlid().ToString();
         }
-        public float Quanity { get; set; }
+        public double Quanity { get; set; }
 
         [ForeignKey("HoaDonForeignKey")]
         public string HoaDonId { get; set; }
