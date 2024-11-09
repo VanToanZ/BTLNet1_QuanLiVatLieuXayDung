@@ -18,15 +18,40 @@
                 <TextBox Name="searchMaContainer" Width="200" Margin="0,0,10,0"/>
                 <Label Content="Tên khu vực:" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <TextBox Name="searchNameContainer" Width="200" Margin="0,0,10,0"/>
-                <Button Name="search" Content="Tìm kiếm" Click="Search_Click" Width="105" Margin="10,0,0,0"/>
-                <Button Name="refresh" Content="Tải lại" Click="Refresh_Click" Width="105" Margin="10,0,0,0"/>
+                <Button Name="search" Click="Search_Click" Width="105" Margin="10,0,0,0" Background="#158de3">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Tìm kiếm" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="refresh" Click="Refresh_Click" Width="105" Margin="10,0,0,0" Background="#e76137">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Tải lại" Foreground="White"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
 
             <!-- Action Buttons Section -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                <Button Name="create" Content="Thêm" Click="Create_Click" Width="105" Margin="0,0,10,0"/>
-                <Button Name="sua" Content="Sửa" Click="Sua_Click" Width="105" Margin="0,0,10,0"/>
-                <Button Name="xoa" Content="Xóa" Click="Xoa_Click" Width="105"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0" >
+                <Button Name="create" Click="Create_Click" Width="105" Margin="0,0,10,0" Background="Green">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\plus-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Thêm" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="sua" Click="Sua_Click" Width="105" Margin="0,0,10,0" Background="#ffc107">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Sửa" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="xoa" Click="Xoa_Click" Width="105"  Background="#dc3545">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (1)\trash-can-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Xóa" Foreground="White"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </StackPanel>
 

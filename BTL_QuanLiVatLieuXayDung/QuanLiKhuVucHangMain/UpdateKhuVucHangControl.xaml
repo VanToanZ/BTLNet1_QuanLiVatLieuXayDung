@@ -16,7 +16,9 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <Button Name="Exit" Content="Thoát" Width="100" Height="30" Margin="10" Click="Exit_Click"/>
+        </StackPanel>
         <!-- User Input Fields -->
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
             <StackPanel Margin="0,10">
@@ -51,9 +53,18 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                <Button Name="updateTypeVatLieu" Content="Update" Click="UpdateKhuVucHang_Click" Width="100" Margin="10" Height="30" Grid.Column="0"/>
-                <Button Name="Reset" Content="Reset" Click="Reset_Click" Width="100" Margin="10" Height="30" Grid.Column="1"/>
-                <Button Name="Exit" Content="Thoát" Width="100"  Click="Exit_Click" Margin="10" Height="30" Grid.Column="2"/>
+                <Button Name="updateTypeVatLieu" Click="UpdateKhuVucHang_Click" Width="100" Margin="10" Height="30" Grid.Column="0" Background="#53b527">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (3)\check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Lưu" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Name="Reset" Click="Reset_Click" Width="100" Margin="10" Height="30" Grid.Column="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Nhập lại" />
+                    </StackPanel>
+                </Button>
             </StackPanel>
            
         </Grid>

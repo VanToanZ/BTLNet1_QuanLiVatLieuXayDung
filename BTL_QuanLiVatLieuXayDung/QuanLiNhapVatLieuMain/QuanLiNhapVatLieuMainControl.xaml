@@ -21,8 +21,18 @@
             <StackPanel Orientation="Horizontal" Margin="10">
                 <Label Content="Vật liệu:" VerticalAlignment="Center" Margin="10"/>
                 <ComboBox Name="searchVatLieu" Width="200" Height="30" Margin="10"/>
-                <Button Name="Search" Content="Tìm kiếm" Width="100" Height="30" Margin="10" Click="Search_Click"/>
-                <Button Name="Refresh" Content="Tải lại" Width="100" Height="30" Margin="10" Click="Refresh_Click"/>
+                <Button Name="Search" Width="100" Height="30" Margin="10" Click="Search_Click" Background="#158de3">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tìm kiếm" Foreground="White"/>
+                </StackPanel>
+                </Button>
+                <Button Name="Refresh" Width="100" Height="30" Margin="10" Click="Refresh_Click" Background="#e76137">
+                <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tải lại" Foreground="White"/>
+                </StackPanel>
+                </Button>
             </StackPanel>
         </StackPanel>
 

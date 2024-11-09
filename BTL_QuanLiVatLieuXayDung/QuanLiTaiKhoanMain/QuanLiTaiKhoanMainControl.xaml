@@ -12,24 +12,52 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Search and Filter Section -->
         <StackPanel Orientation="Vertical" Grid.Row="0" Margin="0,0,0,10">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10" HorizontalAlignment="Left">
                 <TextBlock Text="Tên tài khoản:" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <TextBox x:Name="searchTenTaiKhoan" Width="285" Margin="0,0,10,0"/>
                 <TextBlock Text="Quyền:" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 <ComboBox x:Name="searchRoles" Width="121"/>
-                <Button x:Name="searchButton" Content="Tìm kiếm" Click="search_Click" Width="126" Margin="10,0,10,0"/>
-                <Button x:Name="refreshButton" Content="Tải lại" Click="reset_click" Width="126"/>
+                <Button x:Name="searchButton" Click="search_Click" Width="126" Margin="10,0,10,0" Background="#158de3">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Tìm kiếm" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="refreshButton" Click="reset_click" Width="126" Background="#e76137">
+                <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tải lại" Foreground="White"/>
+                </StackPanel>
+                </Button>
             </StackPanel>
         </StackPanel>
 
         <!-- Action Buttons Section -->
         <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right" Margin="0,40,0,0">
-            <Button x:Name="createButton" Content="Thêm" Click="create_Click" Width="105" Margin="0,0,10,0"/>
-            <Button x:Name="editButton" Content="Sửa" Click="sua_Click" Width="126" Margin="0,0,10,0"/>
-            <Button x:Name="deleteButton" Content="Xóa" Click="xoa_Click" Width="126"/>
+            <Button x:Name="createButton" Click="create_Click" Width="105" Margin="0,0,10,0" Background="#28a745" Foreground="White">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\plus-solid (1).png" Width="16" Height="16" Margin="0,0,5,0" />
+                    <TextBlock Text="Thêm" Foreground="White"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="editButton" Click="sua_Click" Width="126" Margin="0,0,10,0" Background="#ffc107" Foreground="White">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Sửa" Foreground="White"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="deleteButton" Click="xoa_Click" Width="126" Background="#dc3545" Foreground="White">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (1)\trash-can-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Xóa" Foreground="White"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
+
+
 
         <!-- Data Grid Section -->
         <DataGrid x:Name="dataTaiKhoan" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" 

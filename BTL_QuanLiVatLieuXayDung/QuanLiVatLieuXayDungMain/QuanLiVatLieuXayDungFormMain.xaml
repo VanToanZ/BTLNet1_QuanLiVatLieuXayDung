@@ -9,6 +9,8 @@
     <Grid x:Name="quanLiVatLieuXayDung" Loaded="quanLiVatLieuXayDung_Load">
         <Menu VerticalAlignment="Top" Height="30">
             <MenuItem x:Name="txtThongTinTaiKhoan" Header="Tài khoản" Click="thongTinTaiKhoan_Click" Height="32">
+                <MenuItem Header="Thông tin tài khoản" Click="InfoUser_Click" Height="32">
+                </MenuItem>
                 <MenuItem Header="Đăng xuất" Click="Logout_Click" Height="32">
                 </MenuItem>
             </MenuItem>

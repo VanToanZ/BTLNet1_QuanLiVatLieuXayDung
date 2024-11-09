@@ -104,6 +104,17 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
             }
             LoadUserControl(new ThongTinTaiKhoanForm(_user));
         }
+
+        private void InfoUser_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                SelectMenuItem(clickedItem);  // Gọi hàm SelectMenuItem để thay đổi màu sắc, viền cho mục đã chọn
+            }
+            LoadUserControl(new ThongTinTaiKhoanForm(_user));
+        }
         private void quanLiTaiKhoan_Click(object sender, RoutedEventArgs e)
         {
             MenuItem clickedItem = sender as MenuItem;
