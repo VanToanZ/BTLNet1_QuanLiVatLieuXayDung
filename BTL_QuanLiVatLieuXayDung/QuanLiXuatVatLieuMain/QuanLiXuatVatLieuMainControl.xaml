@@ -18,12 +18,29 @@
                 <!-- Mã hóa đơn Search -->
                 <Label Content="Mã hóa đơn:" VerticalAlignment="Center" Margin="10"/>
                 <TextBox Name="searchCodeHoaDon" Width="300" Height="30" Margin="10"/>
-                <Button Name="search" Content="Tìm kiếm" Width="100" Height="30" Margin="10" Click="search_Click"/>
-                <Button Name="refresh" Content="Tải lại" Width="100" Height="30" Margin="10" Click="refresh_Click"/>
+                <Button Name="search" Width="100" Height="30" Margin="10" Click="search_Click" Background="#158de3">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tìm kiếm" Foreground="White"/>
+                </StackPanel>
+                </Button>
+                <Button Name="refresh" Width="100" Height="30" Margin="10" Click="refresh_Click" Background="#e76137" BorderBrush="#e76137" BorderThickness="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Tải lại" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button Name="DetailHoaDon" Content="Chi tiết hóa đơn" Width="100" Height="30" Margin="10" Click="Deatail_Click"/>
+                <Button Name="DetailHoaDon" Width="100" Height="30" Margin="10" Click="Deatail_Click" Background="#68dfe7">
+                <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng\circle-info-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Chi tiết" Foreground="White"/>
+                </StackPanel>
+                </Button>
             </StackPanel>
+            
         </StackPanel>
 
         <!-- DataGrid Panel -->

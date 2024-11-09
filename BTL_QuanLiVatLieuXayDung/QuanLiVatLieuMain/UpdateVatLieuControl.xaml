@@ -18,7 +18,9 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <Button Name="Exit" Content="Thoát" Width="100" Height="30" Margin="10" Click="Exit_Click"/>
+        </StackPanel>
         <!-- User Input Fields (Material Info) -->
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
             <!-- Material Name -->
@@ -74,9 +76,18 @@
 
         <!-- Control Buttons (Create, Reset, Exit) -->
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Name="Update" Content="Update" Width="100" Height="30" Margin="10" Click="Update_Click"/>
-            <Button Name="Reset" Content="Reset" Width="100" Height="30" Margin="10" Click="Reset_Click"/>
-            <Button Name="Exit" Content="Thoát" Width="100" Height="30" Margin="10" Click="Exit_Click"/>
+            <Button Name="Update" Width="100" Height="30" Margin="10" Click="Update_Click" Background="#53b527">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (3)\check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Lưu" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Reset" Width="100" Height="30" Margin="10" Click="Reset_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Nhập lại" />
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

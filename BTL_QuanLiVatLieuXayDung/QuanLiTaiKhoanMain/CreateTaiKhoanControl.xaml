@@ -5,8 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain"
              mc:Ignorable="d" Height="Auto" Width="Auto">
-    <Grid Margin="10">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <Grid Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -17,53 +19,71 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
-        <!-- User Input Fields -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
-            <StackPanel Margin="0,10">
-                <Label Content="Tên tài khoản:" />
-                <TextBox x:Name="createUsername" />
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+            <Button Content="Thoát" Click="Exit_Click" Width="100" Height="30" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="Tên tài khoản:" Width="150"/>
+                <TextBox x:Name="createUsername" Width="200"/>
             </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="Họ và tên:" />
-                <TextBox x:Name="createFullname" />
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="Họ và tên:" Width="150"/>
+                <TextBox x:Name="createFullname" Width="200"/>
             </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="Email:" />
-                <TextBox x:Name="createEmail" />
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="Email:" Width="150"/>
+                <TextBox x:Name="createEmail" Width="200"/>
             </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="Địa chỉ:" />
-                <TextBox x:Name="createAddress" />
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="Địa chỉ:" Width="150"/>
+                <TextBox x:Name="createAddress" Width="200"/>
             </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="CCCD:" />
-                <TextBox x:Name="createCccd" />
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="CCCD:" Width="150"/>
+                <TextBox x:Name="createCccd" Width="200"/>
             </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="Mật khẩu:" />
-                <TextBox x:Name="createMatKhau" />
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="Mật khẩu:" Width="150"/>
+                <TextBox x:Name="createMatKhau" Width="200"/>
             </StackPanel>
-            <StackPanel Margin="0,10">
-                <Label Content="Quyền:" />
-                <ComboBox x:Name="createTkRole"/>
-            </StackPanel>
-            <StackPanel Margin="0,10">
-                <Button Content="Tải ảnh" Click="UpLoad_Click" />
+            <StackPanel Margin="0,10" Orientation="Horizontal">
+                <Label Content="Quyền:" Width="150"/>
+                <ComboBox x:Name="createTkRole" Width="200"/>
             </StackPanel>
         </StackPanel>
 
-        <!-- Image Upload -->
-        <Border Grid.Row="0" Grid.Column="1" Margin="10" BorderBrush="Gray" BorderThickness="1" 
-                VerticalAlignment="Top" HorizontalAlignment="Stretch" 
-                Width="300" Height="400" CornerRadius="5" Background="LightGray">
-            <Image x:Name="createImageTK" Stretch="Uniform" />
-        </Border>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border BorderBrush="Gray" BorderThickness="1" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Width="200" Height="200" CornerRadius="5" Background="LightGray">
+                <Image x:Name="createImageTK" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50"/>
+            </Border>
 
-        <!-- Control Buttons -->
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Content="Create" Click="CreateTaiKhoan_Click" Width="100" Height="30" Margin="10" />
-            <Button Content="Reset" Click="Reset_Click" Width="100" Height="30" Margin="10" />
-            <Button Content="Thoát" Click="Exit_Click" Width="100" Margin="10" Height="30" />
+            <Button Click="UpLoad_Click" Width="100" HorizontalAlignment="Center" Margin="10,10" Background="#1e91e4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Tải ảnh" Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Click="CreateTaiKhoan_Click" Width="100" Height="30" Margin="5" Background="#53b527">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (3)\check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Lưu" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button Click="Reset_Click" Width="100" Height="30" Margin="5">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Nhập lại" />
+                </StackPanel>
+            </Button>
         </StackPanel>
     </Grid>
+    </ScrollViewer>
+
 </UserControl>

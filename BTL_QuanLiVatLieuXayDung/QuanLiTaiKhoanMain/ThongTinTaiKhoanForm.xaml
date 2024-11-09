@@ -4,43 +4,48 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" d:DesignWidth="900" Height="448">
-    <Grid Margin="30">
+    <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Label Content="Họ và tên:" Grid.Row="0" Grid.Column="0" Margin="5" />
-        <Label x:Name="valueHoTen" Content="Label" Grid.Row="0" Grid.Column="1" Margin="5" />
-
-        <Label Content="Chức vụ:" Grid.Row="1" Grid.Column="0" Margin="5" />
-        <Label x:Name="valueChucVu" Content="Label" Grid.Row="1" Grid.Column="1" Margin="5" />
-
-        <Label Content="Căn cước công dân:" Grid.Row="2" Grid.Column="0" Margin="5" />
-        <Label x:Name="valueCCCD" Content="Label" Grid.Row="2" Grid.Column="1" Margin="5" />
-
-        <Label Content="Email:" Grid.Row="3" Grid.Column="0" Margin="5" />
-        <Label x:Name="valueEmail" Content="Label" Grid.Row="3" Grid.Column="1" Margin="5" />
-
-        <Label Content="Địa chỉ:" Grid.Row="4" Grid.Column="0" Margin="5" />
-        <Label x:Name="valueDiaChi" Content="Label" Grid.Row="4" Grid.Column="1" Margin="5" />
-
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="5" Grid.ColumnSpan="2" Margin="5">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="5" Grid.Column="0"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                MaxWidth="200" MaxHeight="200">
             <Image x:Name="imageTaiKhoan" 
-                   Stretch="UniformToFill"
-                   HorizontalAlignment="Stretch" 
-                   VerticalAlignment="Stretch"/>
+                   Stretch="UniformToFill"/>
         </Border>
+
+        <StackPanel Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Họ và tên:" Grid.Row="0" Grid.Column="0" Margin="5" />
+                <Label x:Name="valueHoTen" Content="Label" Grid.Row="0" Grid.Column="1" Margin="5" />
+
+                <Label Content="Chức vụ:" Grid.Row="1" Grid.Column="0" Margin="5" />
+                <Label x:Name="valueChucVu" Content="Label" Grid.Row="1" Grid.Column="1" Margin="5" />
+
+                <Label Content="Căn cước công dân:" Grid.Row="2" Grid.Column="0" Margin="5" />
+                <Label x:Name="valueCCCD" Content="Label" Grid.Row="2" Grid.Column="1" Margin="5" />
+
+                <Label Content="Email:" Grid.Row="3" Grid.Column="0" Margin="5" />
+                <Label x:Name="valueEmail" Content="Label" Grid.Row="3" Grid.Column="1" Margin="5" />
+
+                <Label Content="Địa chỉ:" Grid.Row="4" Grid.Column="0" Margin="5" />
+                <Label x:Name="valueDiaChi" Content="Label" Grid.Row="4" Grid.Column="1" Margin="5" />
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>

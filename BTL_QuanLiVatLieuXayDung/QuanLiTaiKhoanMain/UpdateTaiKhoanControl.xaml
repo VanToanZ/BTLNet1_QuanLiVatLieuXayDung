@@ -4,76 +4,93 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" d:DesignWidth="1078" Height="739">
-    <Grid Margin="40,40,40,91" Loaded="updateTaiKhoan_Load">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 
-        <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-            <TextBlock FontSize="20" FontWeight="Bold" Text="Cập nhật tài khoản" Margin="0,0,0,10"/>
+        <Grid Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-            <!-- Username -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Tên tài khoản:"/>
-                <TextBox Name="updateUsername" Width="400" MinWidth="200"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Exit Button at the top -->
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                <Button Content="Thoát" Click="Exit_Click" Width="100" Height="30" Margin="5"/>
             </StackPanel>
 
-            <!-- Full Name -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Họ và tên:"/>
-                <TextBox Name="updateFullname" Width="400" MinWidth="200"/>
+            <!-- Account Details Section -->
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="Tên tài khoản:" Width="150"/>
+                    <TextBox Name="updateUsername" Width="200"/>
+                </StackPanel>
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="Họ và tên:" Width="150"/>
+                    <TextBox Name="updateFullname" Width="200"/>
+                </StackPanel>
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="Email:" Width="150"/>
+                    <TextBox Name="updateEmail" Width="200"/>
+                </StackPanel>
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="Địa chỉ:" Width="150"/>
+                    <TextBox Name="updateAddress" Width="200"/>
+                </StackPanel>
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="CCCD:" Width="150"/>
+                    <TextBox Name="updateCccd" Width="200"/>
+                </StackPanel>
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="Mật khẩu:" Width="150"/>
+                    <PasswordBox Name="updateMatKhau" Width="200"/>
+                </StackPanel>
+                <StackPanel Margin="0,10" Orientation="Horizontal">
+                    <Label Content="Quyền:" Width="150"/>
+                    <ComboBox Name="updateTkRole" Width="200">
+                        <ComboBoxItem Content="Quyền 1"/>
+                        <ComboBoxItem Content="Quyền 2"/>
+                        <ComboBoxItem Content="Quyền 3"/>
+                    </ComboBox>
+                </StackPanel>
             </StackPanel>
 
-            <!-- Email -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Email:"/>
-                <TextBox Name="updateEmail" Width="400" MinWidth="200"/>
-            </StackPanel>
-
-            <!-- Address -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Địa chỉ:"/>
-                <TextBox Name="updateAddress" Width="400" MinWidth="200"/>
-            </StackPanel>
-
-            <!-- CCCD -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="CCCD:"/>
-                <TextBox Name="updateCccd" Width="400" MinWidth="200"/>
-            </StackPanel>
-
-            <!-- Password -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Mật khẩu:"/>
-                <PasswordBox Name="updateMatKhau" Width="400" MinWidth="200"/>
-            </StackPanel>
-
-            <!-- Role -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Quyền:"/>
-                <ComboBox Name="updateTkRole" Width="200">
-                    <ComboBoxItem Content="Quyền 1"/>
-                    <ComboBoxItem Content="Quyền 2"/>
-                    <ComboBoxItem Content="Quyền 3"/>
-                </ComboBox>
-            </StackPanel>
-
-            <!-- Image Upload -->
-            <StackPanel Orientation="Vertical" Margin="0,5">
-                <TextBlock Text="Ảnh đại diện:"/>
-                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Margin="0,5" Width="150" Height="150">
-                    <Image Name="updateImageTK" Stretch="Uniform" />
+            <!-- Image Upload Section -->
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Border BorderBrush="Gray" BorderThickness="1" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Width="200" Height="200" CornerRadius="5" Background="LightGray">
+                    <Image Name="updateImageTK" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50"/>
                 </Border>
-                <Button Name="upLoad" Content="Tải ảnh" Click="UpLoad_Click" Width="100" Margin="0,3,0,0"/>
-                <!-- Adjusted margin -->
-            </StackPanel>
-        </StackPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="12,0,0,10">
-            <Button Name="updateTaiKhoan" Content="Update" Click="updateTaiKhoan_Click" Margin="5" Width="100"/>
-            <Button Name="Reset" Content="Reset" Click="Reset_Click" Margin="5" Width="100"/>
-            <Button Name="Exit" Content="Thoát" Click="Exit_Click" Margin="5" Width="100"/>
-        </StackPanel>
-    </Grid>
+                <Button Click="UpLoad_Click" Width="100" HorizontalAlignment="Center" Margin="10,10" Background="#1e91e4">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Tải ảnh" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!-- Action Buttons Section -->
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <Button Click="updateTaiKhoan_Click" Width="100" Height="30" Margin="5" Background="#53b527">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (3)\check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Lưu" Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button Click="Reset_Click" Width="100" Height="30" Margin="5">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Nhập lại" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
