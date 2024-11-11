@@ -1,4 +1,5 @@
-﻿using BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain;
+﻿using BTL_QuanLiVatLieuXayDung.QuanLiHeThongMain;
+using BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain;
 using BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain;
 using BTL_QuanLiVatLieuXayDung.QuanLiNhapVatLieuMain;
 using BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain;
@@ -33,6 +34,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
         private readonly INhapRepostiory _nhapRepostiory;
         private readonly IHoaDonRepository _hoaDonRepository;
         private readonly IDetailHoaDonRepostiory _detailHoaDonRepostiory;
+        private readonly IConfigRepository _configRepository;
         public QuanLiVatLieuXayDungFormMain(
             User user,
             string role,
@@ -42,7 +44,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
             IContainerRepository containerRepository,
             INhapRepostiory nhapRepostiory,
             IHoaDonRepository hoaDonRepository,
-            IDetailHoaDonRepostiory detailHoaDonRepostiory)
+            IDetailHoaDonRepostiory detailHoaDonRepostiory,
+            IConfigRepository configRepository)
         {
             InitializeComponent();
             _user = user;
@@ -54,6 +57,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
             _nhapRepostiory = nhapRepostiory;
             _hoaDonRepository = hoaDonRepository;
             _detailHoaDonRepostiory = detailHoaDonRepostiory;
+            _configRepository = configRepository;
             allMenuItems.AddRange(new[]
             {
                 txtQuanLiDon,
@@ -90,7 +94,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
                     _containerRepository,
                     _nhapRepostiory,
                     _hoaDonRepository,
-                    _detailHoaDonRepostiory);
+                    _detailHoaDonRepostiory,
+                    _configRepository);
             this.Hide();
             login.Show();
         }
@@ -184,7 +189,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
         }
         private void heThong_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadUserControl(new QuanLiHeThongMainControl(_configRepository));
         }
 
         private void LoadUserControl<T>(T userControl)

@@ -14,14 +14,14 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string ParamName { get; set; }
-        [Required]
+        public string ParamName { get; set; } = null!;
+
         [StringLength(500)]
         [Column(TypeName = "nvarchar")]
-        public string ParamValue { get; set; }
+        public string? ParamValue { get; set; }
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string Group { get; set; }
+        public string Group { get; set; } = null!;
     }
 }

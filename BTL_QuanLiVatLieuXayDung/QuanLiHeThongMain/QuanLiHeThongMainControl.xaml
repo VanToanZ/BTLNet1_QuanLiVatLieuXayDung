@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="BTL_QuanLiVatLieuXayDung.QuanLiHeThongMain.QuanLiHeThongMainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiHeThongMain"
+             mc:Ignorable="d" 
+             Height="Auto" Width="Auto">
+    <Grid Margin="40" Loaded="HeThong_Load">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <!-- Dòng phân trang -->
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="dataHeThong" Grid.Row="1" AutoGenerateColumns="False" Margin="0,10,0,10" 
+                  RowHeight="30" FontSize="14" CanUserAddRows="False" SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <!-- Cột Id (ẩn) -->
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Collapsed" Width="*" />
+
+                <!-- Cột Tên -->
+                <DataGridTextColumn Header="Tên" Binding="{Binding ParamName}" Width="*" />
+
+                <!-- Cột Giá trị -->
+                <DataGridTextColumn Header="Giá trị" Binding="{Binding ParamValue}" Width="*" />
+
+                <!-- Cột Nhóm -->
+                <DataGridTextColumn Header="Nhóm" Binding="{Binding Group}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Phần phân trang -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+            <Button Name="btnPrevious" Click="BtnPrevious_Click" Width="80" Content="Previous" Margin="0,0,10,0" />
+            <!-- Hiển thị các số trang -->
+            <StackPanel Name="PaginationPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Button Name="btnNext" Click="BtnNext_Click" Width="80" Content="Next" />
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0" >
+            <Button Name="sua" Click="Sua_Click" Width="105" Margin="0,0,10,0" Background="#ffc107">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Sửa" Foreground="White"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

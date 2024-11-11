@@ -1,4 +1,4 @@
-﻿using BTL_QuanLyVatLieuXayDung.Data;
+﻿
 using BTL_QuanLyVatLieuXayDung.Data.Common;
 using BTL_QuanLyVatLieuXayDung.Data.Dto;
 using BTL_QuanLyVatLieuXayDung.Data.Enum;
@@ -6,9 +6,6 @@ using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using MessageBox = System.Windows.MessageBox;
-using UserControl = System.Windows.Controls.UserControl;
 
 namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
 {
@@ -18,6 +15,10 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
     public partial class QuanLiTaiKhoanMainControl : UserControl
     {
         private readonly IUserRepository _userRepository;
+        private int currentPage = 1;   // Trang hiện tại
+        private int pageSize = 3;      // Số lượng item mỗi trang
+        private int totalRecords = 0;   // Tổng số bản ghi
+        private int totalPages = 0;
         public QuanLiTaiKhoanMainControl(IUserRepository userRepository)
         {
             InitializeComponent();
@@ -36,13 +37,27 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
         {
             var data = await GetData();
             dataTaiKhoan.ItemsSource = data;
+            UpdatePaginationButtons();
         }
 
         private async Task<List<UserDto>> GetData()
         {
-            var users = await _userRepository
+            // Tính toán dữ liệu cho trang hiện tại
+            var skip = (currentPage - 1) * pageSize;
+            var query = _userRepository
                 .FindByCondition(x => x.Status != nameof(EStatus.Delete))
-                .ToListAsync();
+                .Skip(skip)
+                .Take(pageSize);
+
+            // Lấy dữ liệu từ cơ sở dữ liệu
+            var users = await query.ToListAsync();
+
+            // Tính tổng số bản ghi và số trang
+            totalRecords = await _userRepository
+                .FindByCondition(x => x.Status != nameof(EStatus.Delete))
+            .CountAsync();
+
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
 
             return users.Select(x => new UserDto()
             {
@@ -88,6 +103,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
             }).ToListAsync();
 
             dataTaiKhoan.ItemsSource = userDtos;
+            currentPage = 1;
+            UpdatePaginationButtons();
         }
 
         private void create_Click(object sender, RoutedEventArgs e)
@@ -140,6 +157,70 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
         private void reset_click(object sender, RoutedEventArgs e)
         {
             LoadUserControl(new QuanLiTaiKhoanMainControl(_userRepository));
+        }
+        private void UpdatePaginationButtons()
+        {
+            // Xóa tất cả các nút số trang hiện có
+            PaginationPanel.Children.Clear();
+
+            // Thêm nút Previous
+            btnPrevious.IsEnabled = currentPage > 1;
+
+            // Thêm các số trang
+            for (int i = 1; i <= totalPages; i++)
+            {
+                var pageButton = new Button
+                {
+                    Content = i,
+                    Tag = i,
+                    Width = 30,
+                    Margin = new Thickness(5),
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                // Nếu nút này là trang hiện tại, thay đổi màu nền của nút
+                if (i == currentPage)
+                {
+                    pageButton.Background = System.Windows.Media.Brushes.White; // Màu nền cho trang hiện tại
+                }
+                else
+                {
+                    pageButton.Background = System.Windows.Media.Brushes.LightGray; // Màu nền mặc định
+                }
+
+                pageButton.Click += PageButton_Click;
+                PaginationPanel.Children.Add(pageButton);
+            }
+
+            // Thêm nút Next
+            btnNext.IsEnabled = currentPage < totalPages;
+        }
+        private async void BtnPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                await LoadData();
+            }
+        }
+
+        private async void BtnNext_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                await LoadData();
+            }
+        }
+
+        private async void PageButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                currentPage = (int)button.Tag;
+                await LoadData();
+            }
         }
     }
 }

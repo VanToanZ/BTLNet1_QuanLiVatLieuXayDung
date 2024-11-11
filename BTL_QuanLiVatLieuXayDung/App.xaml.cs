@@ -18,7 +18,7 @@ namespace BTL_QuanLiVatLieuXayDung
         private ServiceProvider serviceProvider;
         public App()
         {
-            const string connectionString = "Data Source=(local);Initial Catalog=QuanLyVatLieuXayDung_V5;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
+            const string connectionString = "Data Source=MSI;Initial Catalog=QuanLyVatLieuXayDung_V5;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
             AppHost = Host.CreateDefaultBuilder()
                  .ConfigureLogging(logging =>
                  {
@@ -45,6 +45,7 @@ namespace BTL_QuanLiVatLieuXayDung
                      services.AddScoped<INhapRepostiory, NhapRepostiory>();
                      services.AddScoped<IHoaDonRepository, HoaDonRepository>();
                      services.AddScoped<IDetailHoaDonRepostiory, DetailHoaDonRepostiory>();
+                     services.AddScoped<IConfigRepository, ConfigRepository>();
                      services.AddTransient<MainWindow>();
                  }).Build();
         }

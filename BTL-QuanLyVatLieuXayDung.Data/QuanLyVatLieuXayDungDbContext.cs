@@ -28,7 +28,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>().HasData(UserSeeds.GetUsers()) ;
-
+            modelBuilder.Entity<Config>().HasData(ConfigSeed.GetConfigs());
         }
 
         public DbSet<User> User { get; set; }

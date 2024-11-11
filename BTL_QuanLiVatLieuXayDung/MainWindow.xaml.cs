@@ -18,6 +18,7 @@ namespace BTL_QuanLiVatLieuXayDung
         private readonly INhapRepostiory _nhapRepostiory;
         private readonly IHoaDonRepository _hoaDonRepository;
         private readonly IDetailHoaDonRepostiory _detailHoaDonRepostiory;
+        private readonly IConfigRepository _configRepository;
         public MainWindow(
             IUserRepository userRepository,
             ITypeVatLieuRepository typeVatLieuRepository,
@@ -25,7 +26,8 @@ namespace BTL_QuanLiVatLieuXayDung
             IContainerRepository containerRepository,
             INhapRepostiory nhapRepostiory,
             IHoaDonRepository hoaDonRepository,
-            IDetailHoaDonRepostiory detailHoaDonRepostiory)
+            IDetailHoaDonRepostiory detailHoaDonRepostiory,
+            IConfigRepository configRepository)
         {
             InitializeComponent();
             _userRepository = userRepository;
@@ -35,6 +37,7 @@ namespace BTL_QuanLiVatLieuXayDung
             _nhapRepostiory = nhapRepostiory;
             _hoaDonRepository = hoaDonRepository;
             _detailHoaDonRepostiory = detailHoaDonRepostiory;
+            _configRepository = configRepository;
         }
         private async void login_Click(object sender, RoutedEventArgs e)
         {
@@ -54,7 +57,8 @@ namespace BTL_QuanLiVatLieuXayDung
                     _containerRepository,
                     _nhapRepostiory,
                     _hoaDonRepository,
-                    _detailHoaDonRepostiory);
+                    _detailHoaDonRepostiory,
+                    _configRepository);
                 this.Hide();
                 qlMain.Show();
             }

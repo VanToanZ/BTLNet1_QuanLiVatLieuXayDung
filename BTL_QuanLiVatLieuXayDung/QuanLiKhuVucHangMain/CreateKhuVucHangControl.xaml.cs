@@ -119,7 +119,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain
             return true;
         }
 
-        private void Exit_Click_1(object sender, RoutedEventArgs e)
+        private void Exit_Click(object sender, RoutedEventArgs e)
         {
             LoadUserControl(new QuanLiKhuVucHangControl(_containerRepository, _vatLieuRepository));
         }

@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="QuanLiKhuVucHangMain\plus-solid.png" />
+    <None Remove="QuanLiKhuVucHangMain\rotate-right-solid %281%29.png" />
+    <None Remove="z6015337943112_fdb7be324dc5f0d803bb5c166d092a9c.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.20" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.20">
       <PrivateAssets>all</PrivateAssets>
@@ -23,6 +29,12 @@
   <ItemGroup>
     <ProjectReference Include="..\BTL-QuanLyVatLieuXayDung.Data\BTL_QuanLyVatLieuXayDung.Data.csproj" />
     <ProjectReference Include="..\BTL_QuanLyVatLieuXayDung.Infrastructure\BTL_QuanLyVatLieuXayDung.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="QuanLiKhuVucHangMain\Image\plus-solid.png" />
+    <Resource Include="QuanLiKhuVucHangMain\Image\rotate-right-solid %281%29.png" />
+    <Resource Include="z6015337943112_fdb7be324dc5f0d803bb5c166d092a9c.jpg" />
   </ItemGroup>
 
 </Project>

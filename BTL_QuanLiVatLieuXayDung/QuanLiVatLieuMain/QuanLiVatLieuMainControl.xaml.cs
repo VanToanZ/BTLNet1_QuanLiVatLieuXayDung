@@ -6,10 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using CheckBox = System.Windows.Controls.CheckBox;
-using MessageBox = System.Windows.Forms.MessageBox;
-using UserControl = System.Windows.Controls.UserControl;
 
 namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
 {
@@ -24,6 +20,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
         private readonly INhapRepostiory _nhapRepostiory;
         private readonly IHoaDonRepository _hoaDonRepository;
         private readonly IDetailHoaDonRepostiory _detailHoaDonRepostiory;
+
+        private int currentPage = 1;   // Trang hiện tại
+        private int pageSize = 3;      // Số lượng item mỗi trang
+        private int totalRecords = 0;   // Tổng số bản ghi
+        private int totalPages = 0;     // Tổng số trang
         public QuanLiVatLieuMainControl(
             IContainerRepository containerRepository,
             ITypeVatLieuRepository typeVatLieuRepository,
@@ -83,6 +84,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 IsChecked = x.Status.Equals(nameof(EStatus.Active)) ? true : false,
             }).ToList();
             dataVatLieu.ItemsSource = vatLieuDtos;
+            currentPage = 1;
+            UpdatePaginationButtons();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
@@ -109,6 +112,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
             searchContainer.ItemsSource = await GetContainers();
             searchTypeVatLieu.ItemsSource = await GetTypeVatLieus();
             dataVatLieu.ItemsSource = await GetVatLieus();
+            UpdatePaginationButtons();
         }
         private async Task<List<KeyValueItem>> GetContainers()
         {
@@ -137,11 +141,27 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
 
         private async Task<List<VatLieuDto>> GetVatLieus()
         {
-            var vatLieus = await _vatLieuRepository
+            // Tính toán dữ liệu cho trang hiện tại
+            var skip = (currentPage - 1) * pageSize;
+            // Chuyển đổi dữ liệu thành dạng DTO
+            var query = _vatLieuRepository
                .FindByCondition(x => x.Status != nameof(EStatus.Delete))
                .Include(x => x.ContainerForeignKey)
                .Include(x => x.TypeVatLieuForeignKey)
-               .ToListAsync();
+               .Skip(skip)
+               .Take(pageSize);
+
+            // Lấy dữ liệu từ cơ sở dữ liệu
+            var vatLieus = await query.ToListAsync();
+
+            // Tính tổng số bản ghi và số trang
+            totalRecords = await _vatLieuRepository
+               .FindByCondition(x => x.Status != nameof(EStatus.Delete))
+               .CountAsync();
+
+            totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+
+           
             var vatLieuDtos = vatLieus.Select(x => new VatLieuDto()
             {
                 Id = x.Id,
@@ -185,8 +205,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 var vatLieu = await _vatLieuRepository.GetByIdAsync(selectedUser.Id);
                 if (vatLieu != null)
                 {
-                    var result = MessageBox.Show("Bạn có thật sự muốn xóa vật liệu này?", "Thông báo", MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.OK)
+                    var result = MessageBox.Show("Bạn có thật sự muốn xóa vật liệu này?", "Thông báo", MessageBoxButton.OKCancel);
+                    if (result == MessageBoxResult.OK)
                     {
                         try
                         {
@@ -199,13 +219,13 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                             throw;
                         }
 
-                        MessageBox.Show("Xóa vật liệu thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xóa vật liệu thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                         await LoadData();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Xóa vật liệu không thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Xóa vật liệu không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 }
                 LoadUserControl(new QuanLiVatLieuMainControl(
@@ -237,7 +257,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 }
                 else
                 {
-                    MessageBox.Show("Vật liệu đang không hoạt động hoặc không tồn tại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Vật liệu đang không hoạt động hoặc không tồn tại.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
@@ -265,18 +285,18 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                         var vatLieu = await _vatLieuRepository.GetByIdAsync(id);
                         if (vatLieu!.Quantity <= 0)
                         {
-                            MessageBox.Show($"Số lượng: {vatLieu.NameVatLieu} đã hết.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Số lượng: {vatLieu.NameVatLieu} đã hết.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
                         if (vatLieu!.Quantity < soLuongParse)
                         {
                             // If the quantity in the repository is less than the requested, show error
-                            MessageBox.Show("Số lượng không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Số lượng không hợp lệ.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
                         if (vatLieu.Status.Equals(nameof(EStatus.Inactive)))
                         {
-                            MessageBox.Show("Vật liệu đang không hoạt động.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Vật liệu đang không hoạt động.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
                         }
 
@@ -290,7 +310,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                     catch (Exception)
                     {
                         // Catch invalid parsing of quantity
-                        MessageBox.Show("Số lượng không hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Số lượng không hợp lệ.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
@@ -340,6 +360,73 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
         {
             // Clear existing controls
             this.Content = userControl; // Load the new user control
+        }
+
+        private void UpdatePaginationButtons()
+        {
+            // Xóa tất cả các nút số trang hiện có
+            PaginationPanel.Children.Clear();
+
+            // Thêm nút Previous
+            btnPrevious.IsEnabled = currentPage > 1;
+
+            // Thêm các số trang
+            for (int i = 1; i <= totalPages; i++)
+            {
+                var pageButton = new Button
+                {
+                    Content = i,
+                    Tag = i,
+                    Width = 30,
+                    Margin = new Thickness(5),
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                // Nếu nút này là trang hiện tại, thay đổi màu nền của nút
+                if (i == currentPage)
+                {
+                    pageButton.Background = System.Windows.Media.Brushes.White; // Màu nền cho trang hiện tại
+                }
+                else
+                {
+                    pageButton.Background = System.Windows.Media.Brushes.LightGray; // Màu nền mặc định
+                }
+
+                pageButton.Click += PageButton_Click;
+                PaginationPanel.Children.Add(pageButton);
+            }
+
+            // Thêm nút Next
+            btnNext.IsEnabled = currentPage < totalPages;
+        }
+
+
+        private async void BtnPrevious_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                await LoadData();
+            }
+        }
+
+        private async void BtnNext_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                await LoadData();
+            }
+        }
+
+        private async void PageButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            if (button != null)
+            {
+                currentPage = (int)button.Tag;
+                await LoadData();
+            }
         }
     }
 }
