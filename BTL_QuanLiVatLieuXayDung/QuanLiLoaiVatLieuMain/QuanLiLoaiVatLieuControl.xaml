@@ -21,13 +21,13 @@
                 <TextBox Name="searchNameTypeVatLieu" Width="200" Margin="5"/>
                 <Button Click="Search_Click" Width="100" Margin="5" Background="#158de3">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <Image Source="/ImageCommon/magnifying-glass-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                         <TextBlock Text="Tìm kiếm" Foreground="White"/>
                     </StackPanel>
                 </Button>
                 <Button Click="Refresh_Click" Width="100" Margin="5" Background="#e76137">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <Image Source="/ImageCommon/rotate-right-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                         <TextBlock Text="Tải lại" Foreground="White"/>
                     </StackPanel>
                 </Button>
@@ -39,25 +39,25 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button Click="CreateMaterial_Click" Width="150" Margin="5" Background="Green">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\plus-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <Image Source="/ImageCommon/plus-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                         <TextBlock Text="Thêm vật liệu" Foreground="White"/>
                     </StackPanel>
                 </Button>
                 <Button Click="Create_Click" Width="150" Margin="5" Background="Blue">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\plus-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <Image Source="/ImageCommon/plus-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                         <TextBlock Text="Thêm loại vật liệu" Foreground="White"/>
                     </StackPanel>
                 </Button>
                 <Button Click="Edit_Click" Width="100" Margin="5" Background="#ffc107">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\pen-to-square-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <Image Source="/ImageCommon/pen-to-square-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                         <TextBlock Text="Sửa" Foreground="White"/>
                     </StackPanel>
                 </Button>
                 <Button Click="Delete_Click" Width="100" Margin="5" Background="#dc3545">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="C:\Users\Nitro\Downloads\svgtopng (1)\trash-can-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <Image Source="/ImageCommon/trash-can-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                         <TextBlock Text="Xóa" Foreground="White"/>
                     </StackPanel>
                 </Button>
@@ -93,10 +93,10 @@
         </DataGrid>
         <!-- Phần phân trang -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
-            <Button Name="btnPrevious" Click="BtnPrevious_Click" Width="80" Content="Previous" Margin="0,0,10,0" />
+            <Button Name="btnPrevious" Click="BtnPrevious_Click" Width="80" Content="Trước" Margin="0,0,10,0" />
             <!-- Hiển thị các số trang -->
             <StackPanel Name="PaginationPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Name="btnNext" Click="BtnNext_Click" Width="80" Content="Next" />
+            <Button Name="btnNext" Click="BtnNext_Click" Width="80" Content="Sau" />
         </StackPanel>
     </Grid>
 </UserControl>
