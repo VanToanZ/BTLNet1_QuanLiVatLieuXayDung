@@ -1,11 +1,10 @@
 ﻿<UserControl x:Class="BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain.CreateVatLieuControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" Height="Auto" Width="Auto">
-    <Grid Margin="20" Loaded="CreateVatLieu_Load">
+    <Grid Loaded="CreateVatLieu_Load">
         <!-- Row Definitions: Form section, Image section, and Button section -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -17,68 +16,75 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+
+        <!-- Exit Button -->
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
-            <Button Name="Exit" Content="Thoát" Width="100" Height="30" Margin="10" Click="Exit_Click"/>
+            <Button Name="Exit" Content="Thoát" Width="100" Height="30" Margin="20,45" Click="Exit_Click"/>
         </StackPanel>
+
         <!-- User Input Fields (Material Info) -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
             <!-- Material Name -->
             <StackPanel Margin="0,10">
-                <Label Content="Tên vật liệu:"/>
-                <TextBox Name="createNameVatLieu" Margin="0,5"/>
+                <Label Content="Tên vật liệu:" Width="150"/>
+                <TextBox Name="createNameVatLieu" Width="200"/>
             </StackPanel>
 
             <!-- Material Code -->
             <StackPanel Margin="0,10">
-                <Label Content="Mã vật liệu:"/>
-                <TextBox Name="createCodeVatLieu" Margin="0,5"/>
+                <Label Content="Mã vật liệu:" Width="150"/>
+                <TextBox Name="createCodeVatLieu" Width="200"/>
             </StackPanel>
 
             <!-- Price -->
             <StackPanel Margin="0,10">
-                <Label Content="Giá bán:"/>
-                <TextBox Name="createPrice" Margin="0,5"/>
+                <Label Content="Giá bán:" Width="150"/>
+                <TextBox Name="createPrice" Width="200"/>
             </StackPanel>
 
             <!-- Unit -->
             <StackPanel Margin="0,10">
-                <Label Content="Đơn vị:"/>
-                <ComboBox Name="createDonVi" Margin="0,5"/>
+                <Label Content="Đơn vị:" Width="150"/>
+                <ComboBox Name="createDonVi" Width="200"/>
             </StackPanel>
 
             <!-- Container Section -->
             <StackPanel Margin="0,10">
-                <Label Content="Khu vực để vật liệu:"/>
-                <ComboBox Name="createContainerId" Margin="0,5"/>
+                <Label Content="Khu vực để vật liệu:" Width="150"/>
+                <ComboBox Name="createContainerId" Width="200"/>
             </StackPanel>
+
+            <!-- Image Upload Button -->
             <StackPanel Margin="0,10">
-                <Label Content="Ảnh loại vật liệu:"/>
-                <Button Name="label" Content="Tải ảnh"  Margin="0,5" Click="UpLoad_Click"/>
+                <Label Content="Ảnh loại vật liệu:" Width="150"/>
+                <Button Name="label" Width="100" HorizontalAlignment="Center" Click="UpLoad_Click" Background="#1e91e4">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/ImageCommon/upload-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Tải ảnh" Foreground="White"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </StackPanel>
 
         <!-- Image Section (Image display area) -->
-        <Border Grid.Row="0" Grid.Column="1" Margin="10" BorderBrush="Gray" BorderThickness="1" 
-                VerticalAlignment="Top" HorizontalAlignment="Stretch" 
-                Width="200" Height="200" CornerRadius="5" Background="LightGray">
-            <Image Name="createImageVatLieu" Stretch="Uniform"/>
-        </Border>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border BorderBrush="Gray" BorderThickness="1" Width="200" Height="200" CornerRadius="5" Background="LightGray">
+                <Image Name="createImageVatLieu" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Height="50"/>
+            </Border>
+        </StackPanel>
 
-        <!-- Button to Upload Image (now below the image area) -->
-       
-
-        <!-- Control Buttons (Create, Reset, Exit) -->
+        <!-- Control Buttons (Create, Reset) -->
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Name="Create" Width="100" Height="30" Margin="10" Click="Create_Click" Background="#53b527">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="C:\Users\Nitro\Downloads\svgtopng (3)\check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
-                <TextBlock Text="Lưu" Foreground="White"/>
-            </StackPanel>
-            </Button>
-            <Button Name="Reset" Width="100" Height="30" Margin="10" Click="Reset_Click">
+            <Button Name="Create" Width="100" Height="30" Margin="5" Click="Create_Click" Background="#53b527">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="C:\Users\Nitro\Downloads\svgtopng (2)\rotate-right-solid (1).png" Width="16" Height="16" Margin="0,0,5,0"/>
-                    <TextBlock Text="Nhập lại" />
+                    <Image Source="/ImageCommon/magnifying-glass-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Lưu" Foreground="White"/>
+                </StackPanel>
+            </Button>
+            <Button Name="Reset" Width="100" Height="30" Margin="5" Click="Reset_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/ImageCommon/rotate-right-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Nhập lại"/>
                 </StackPanel>
             </Button>
         </StackPanel>

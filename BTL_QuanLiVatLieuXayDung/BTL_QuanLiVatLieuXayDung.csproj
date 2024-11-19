@@ -9,8 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="QuanLiHeThongMain\pen-to-square-solid %281%29.png" />
+    <None Remove="QuanLiKhuVucHangMain\check-solid.png" />
+    <None Remove="QuanLiKhuVucHangMain\magnifying-glass-solid %281%29.png" />
+    <None Remove="QuanLiKhuVucHangMain\plus-solid %281%29.png" />
     <None Remove="QuanLiKhuVucHangMain\plus-solid.png" />
     <None Remove="QuanLiKhuVucHangMain\rotate-right-solid %281%29.png" />
+    <None Remove="QuanLiKhuVucHangMain\trash-can-solid %281%29.png" />
+    <None Remove="QuanLiTaiKhoanMain\upload-solid.png" />
+    <None Remove="QuanLiVatLieuMain\arrow-left-solid.png" />
+    <None Remove="QuanLiVatLieuMain\magnifying-glass-solid.png" />
+    <None Remove="QuanLiXuatVatLieuMain\circle-info-solid.png" />
     <None Remove="z6015337943112_fdb7be324dc5f0d803bb5c166d092a9c.jpg" />
   </ItemGroup>
 
@@ -32,8 +41,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="QuanLiKhuVucHangMain\Image\plus-solid.png" />
-    <Resource Include="QuanLiKhuVucHangMain\Image\rotate-right-solid %281%29.png" />
+    <Resource Include="ImageCommon\pen-to-square-solid.png" />
+    <Resource Include="ImageCommon\rotate-right-solid.png" />
+    <Resource Include="ImageCommon\plus-solid.png" />
+    <Resource Include="ImageCommon\magnifying-glass-solid.png" />
+    <Resource Include="ImageCommon\trash-can-solid.png" />
+    <Resource Include="ImageCommon\check-solid.png" />
+    <Resource Include="ImageCommon\upload-solid.png" />
+    <Resource Include="ImageCommon\arrow-right-solid.png" />
+    <Resource Include="ImageCommon\arrow-left-solid.png" />
+    <Resource Include="ImageCommon\circle-info-solid.png" />
     <Resource Include="z6015337943112_fdb7be324dc5f0d803bb5c166d092a9c.jpg" />
   </ItemGroup>
 
