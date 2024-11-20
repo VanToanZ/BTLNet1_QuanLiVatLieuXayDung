@@ -21,7 +21,6 @@
 
             <!-- Main Form Fields -->
             <StackPanel Grid.Row="1" Orientation="Vertical" Margin="20">
-
                 <StackPanel Orientation="Horizontal" Margin="0,10">
                     <Label Content="Mã hóa đơn:" VerticalAlignment="Center" Width="120"/>
                     <TextBlock x:Name="createCodeHoaDon" Text="Mã hóa đơn" VerticalAlignment="Center"/>
@@ -60,7 +59,6 @@
                     <Label Content="Tổng tiền:" VerticalAlignment="Center" Width="120"/>
                     <TextBlock x:Name="createTotalMoney" Text="Tổng tiền:" VerticalAlignment="Center"/>
                 </StackPanel>
-
             </StackPanel>
 
             <!-- Control Buttons (Save, Reset) -->
