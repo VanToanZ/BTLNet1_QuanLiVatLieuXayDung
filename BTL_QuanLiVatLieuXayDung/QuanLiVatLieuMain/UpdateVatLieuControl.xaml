@@ -5,88 +5,83 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Height="Auto" Width="Auto">
-    <Grid Loaded="UpdateVatLieu_Load">
-        <!-- Row Definitions: Form section, Image section, and Button section -->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-        </Grid.ColumnDefinitions>
-
         <!-- Exit Button -->
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left">
             <Button Name="Exit" Content="Thoát" Width="100" Height="30" Margin="20,45" Click="Exit_Click"/>
         </StackPanel>
 
-        <!-- User Input Fields (Material Info) -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
-            <!-- Material Name -->
-            <StackPanel Margin="0,10">
-                <Label Content="Tên vật liệu:" Width="150"/>
-                <TextBox Name="updateNameVatLieu" Width="200" Margin="0,5"/>
-            </StackPanel>
+        <!-- Input Section -->
+        <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10" Background="White">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-            <!-- Material Code -->
-            <StackPanel Margin="0,10">
-                <Label Content="Mã vật liệu:" Width="150"/>
-                <TextBox Name="updateCodeVatLieu" Width="200" Margin="0,5"/>
-            </StackPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
 
-            <!-- Quantity -->
-            <StackPanel Margin="0,10">
-                <Label Content="Số lượng:" Width="150"/>
-                <TextBox Name="updateQuanity" Width="200" Margin="0,5"/>
-            </StackPanel>
-
-            <!-- Price -->
-            <StackPanel Margin="0,10">
-                <Label Content="Giá bán:" Width="150"/>
-                <TextBox Name="updatePrice" Width="200" Margin="0,5"/>
-            </StackPanel>
-
-            <!-- Unit -->
-            <StackPanel Margin="0,10">
-                <Label Content="Đơn vị:" Width="150"/>
-                <ComboBox Name="updateDonVi" Width="200" Margin="0,5"/>
-            </StackPanel>
-
-            <!-- Material Type -->
-            <StackPanel Margin="0,10">
-                <Label Content="Loại vật liệu:" Width="150"/>
-                <ComboBox Name="updateTypeVatLieuId" Width="200" Margin="0,5"/>
-            </StackPanel>
-
-            <!-- Storage Area -->
-            <StackPanel Margin="0,10">
-                <Label Content="Khu vực để vật liệu:" Width="150"/>
-                <ComboBox Name="updateContainerId" Width="200" Margin="0,5"/>
-            </StackPanel>
-
-            <!-- Upload Image Button -->
-            <StackPanel Margin="0,10">
-                <Label Content="Ảnh loại vật liệu:" Width="150"/>
-                <Button Name="label" Width="200" Margin="0,5" Click="UpLoad_Click" Background="#1e91e4">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/ImageCommon/upload-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
-                        <TextBlock Text="Tải ảnh" Foreground="White"/>
+                    <!-- User Input Fields -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Tên vật liệu:" Width="150"/>
+                            <TextBox Name="updateNameVatLieu" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Mã vật liệu:" Width="150"/>
+                            <TextBox Name="updateCodeVatLieu" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Số lượng:" Width="150"/>
+                            <TextBox Name="updateQuanity" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Giá bán:" Width="150"/>
+                            <TextBox Name="updatePrice" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Đơn vị:" Width="150"/>
+                            <ComboBox Name="updateDonVi" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Loại vật liệu:" Width="150"/>
+                            <ComboBox Name="updateTypeVatLieuId" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Khu vực để vật liệu:" Width="150"/>
+                            <ComboBox Name="updateContainerId" Width="200" Margin="0,5"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Ảnh loại vật liệu:" Width="150"/>
+                            <Button Name="label" Width="200" Margin="0,5" Click="UpLoad_Click" Background="#1e91e4">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/ImageCommon/upload-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Tải ảnh" Foreground="White"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
-                </Button>
-            </StackPanel>
-        </StackPanel>
 
-        <!-- Image Section (Image display area) -->
-        <Border Grid.Row="1" Grid.Column="1" Margin="10" BorderBrush="Gray" BorderThickness="1" 
-            VerticalAlignment="Top" HorizontalAlignment="Center" 
-            Width="200" Height="200" CornerRadius="5" Background="LightGray">
-            <Image Name="updateImageVatLieu" Stretch="Uniform"/>
+                    <!-- Image Display Section -->
+                    <Border Grid.Row="0" Grid.Column="1" Margin="10" BorderBrush="Gray" BorderThickness="1" 
+                        VerticalAlignment="Top" HorizontalAlignment="Center" 
+                        Width="200" Height="200" CornerRadius="5" Background="LightGray">
+                        <Image Name="updateImageVatLieu" Stretch="Uniform"/>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
         </Border>
 
-        <!-- Control Buttons (Update, Reset) -->
+        <!-- Control Buttons -->
         <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
             <Button Name="Update" Width="100" Height="30" Margin="5" Click="Update_Click" Background="#53b527">
                 <StackPanel Orientation="Horizontal">

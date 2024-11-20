@@ -5,65 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Height="Auto" Width="Auto">
-    <Grid Loaded="CreateNhapVatLieu_Load">
-        <!-- Row Definitions -->
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-
         <!-- Exit Button -->
-        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left">
             <Button Name="exitButton" Content="Thoát" Click="ExitButton_Click" Width="100" Height="30" Margin="20,45" />
         </StackPanel>
 
-        <!-- User Input Fields -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
-            <!-- Material Name -->
-            <StackPanel Margin="0,10">
-                <Label Content="Tên vật liệu:" Width="150"/>
-                <TextBox IsReadOnly="True" Name="createNameMaterial" Width="200"/>
-            </StackPanel>
+        <!-- Input Section -->
+        <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" CornerRadius="10" Margin="10" Padding="10" Background="White">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-            <!-- Price -->
-            <StackPanel Margin="0,10">
-                <Label Content="Giá nhập:" Width="150"/>
-                <TextBox Name="createPrice" Width="200" PreviewTextInput="CreatePrice_PreviewTextInput" TextChanged="createPrice_TextChanged"/>
-            </StackPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
 
-            <!-- Quantity -->
-            <StackPanel Margin="0,10">
-                <Label Content="Số lượng:" Width="150"/>
-                <TextBox Name="createQuantity" Width="200" PreviewTextInput="CreateQuantity_PreviewTextInput" TextChanged="createQuantity_TextChanged_1"/>
-            </StackPanel>
+                    <!-- User Input Fields -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="10" HorizontalAlignment="Center">
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Tên vật liệu:" Width="150"/>
+                            <TextBox IsReadOnly="True" Name="createNameMaterial" Width="200"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Giá nhập:" Width="150"/>
+                            <TextBox Name="createPrice" Width="200" PreviewTextInput="CreatePrice_PreviewTextInput" TextChanged="createPrice_TextChanged"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Số lượng:" Width="150"/>
+                            <TextBox Name="createQuantity" Width="200" PreviewTextInput="CreateQuantity_PreviewTextInput" TextChanged="createQuantity_TextChanged_1"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,10" Orientation="Horizontal">
+                            <Label Content="Tổng tiền:" Width="150"/>
+                            <TextBox Name="createTotalMoney" Width="200" IsReadOnly="True"/>
+                        </StackPanel>
+                    </StackPanel>
 
-            <!-- Total Money -->
-            <StackPanel Margin="0,10">
-                <Label Content="Tổng tiền:" Width="150"/>
-                <TextBox Name="createTotalMoney" Width="200" IsReadOnly="True"/>
-            </StackPanel>
-        </StackPanel>
-
-        <!-- Control Buttons -->
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-            <Button Name="createButton" Click="CreateButton_Click" Width="100" Height="30" Margin="5" Background="#53b527">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/ImageCommon/check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
-                    <TextBlock Text="Lưu" Foreground="White"/>
-                </StackPanel>
-            </Button>
-            <Button Name="Reset" Click="Reset_Click" Width="100" Height="30" Margin="5">
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/ImageCommon/rotate-right-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
-                    <TextBlock Text="Nhập lại"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
+                    <!-- Action Buttons -->
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                        <Button Name="createButton" Click="CreateButton_Click" Width="100" Height="30" Margin="5" Background="#53b527">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/ImageCommon/check-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Lưu" Foreground="White"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="Reset" Click="Reset_Click" Width="100" Height="30" Margin="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/ImageCommon/rotate-right-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                                <TextBlock Text="Nhập lại"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Border>
     </Grid>
 </UserControl>
