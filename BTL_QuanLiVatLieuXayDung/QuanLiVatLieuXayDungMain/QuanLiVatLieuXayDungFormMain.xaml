@@ -31,10 +31,14 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem x:Name="txtQuanLiBaoCao" Header="Quản lí báo cáo" Click="quanLiBaoCao_Click" Height="32">
+                <MenuItem x:Name ="txtReportNhap" Header="Báo cáo nhập" Click="reportNhap_Click" Height="32">
+                </MenuItem>
+                <MenuItem x:Name ="txtReportXuat" Header="Báo cáo xuất" Click="reportXuat_Click" Height="32">
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="txtHeThong" Header="Hệ thống" Click="heThong_Click" Height="32">
             </MenuItem>
         </Menu>
-        <ContentControl x:Name="MainContent" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+        <ContentControl x:Name="MainContent" VerticalAlignment="Bottom" Height="434" />
     </Grid>
 </Window>

@@ -67,6 +67,12 @@
     <Compile Update="QuanLiXuatVatLieuMain\QuanLiXuatVatLieuMainControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="ReportVatLieuMain\ReportNhapVatLieuMainControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ReportVatLieuMain\ReportXuatVatLieuMainControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -130,6 +136,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="QuanLiXuatVatLieuMain\QuanLiXuatVatLieuMainControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReportVatLieuMain\ReportNhapVatLieuMainControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ReportVatLieuMain\ReportXuatVatLieuMainControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

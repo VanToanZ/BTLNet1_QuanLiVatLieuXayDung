@@ -5,6 +5,7 @@ using BTL_QuanLiVatLieuXayDung.QuanLiNhapVatLieuMain;
 using BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain;
 using BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain;
 using BTL_QuanLiVatLieuXayDung.QuanLiXuatVatLieuMain;
+using BTL_QuanLiVatLieuXayDung.ReportVatLieuMain;
 using BTL_QuanLyVatLieuXayDung.Data;
 using BTL_QuanLyVatLieuXayDung.Data.Enum;
 using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
@@ -145,6 +146,14 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
         private void khuVucHang_Click(object sender, RoutedEventArgs e)
         {
             LoadUserControl(new QuanLiKhuVucHangControl(_containerRepository, _vatLieuRepository));
+        }
+        private void reportNhap_Click(object sender, RoutedEventArgs e)
+        {
+            LoadUserControl(new ReportNhapVatLieuMainControl(_nhapRepostiory));
+        }
+        private void reportXuat_Click(object sender, RoutedEventArgs e)
+        {
+            LoadUserControl(new ReportXuatVatLieuMainControl(_detailHoaDonRepostiory, _hoaDonRepository));
         }
         private void loaiVatLieu_Click(object sender, RoutedEventArgs e)
         {

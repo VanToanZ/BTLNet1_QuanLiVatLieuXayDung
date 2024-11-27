@@ -12,11 +12,11 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
             Id = Ulid.NewUlid().ToString();
         }
         [Required]
-        public float Quantity { get; set; }
+        public double Quantity { get; set; }
         [Required]
         [ForeignKey("VatLieuForeignKey")]
-        public string VatLieuId { get; set; }
-        public VatLieu VatLieuForeignKey { get; set; }
+        public string VatLieuId { get; set; } = null!;
+        public VatLieu VatLieuForeignKey { get; set; } = null!;
         [Required]
         public double Price { get; set; }
         [Required]
@@ -24,7 +24,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         [Required]
         [StringLength(50)]
         [Column(TypeName = "varchar")]
-        public string CreateBy { get; set; }
+        public string CreateBy { get; set; } = null!;
         public DateTime CreateAt { get; set; } = DateTime.Now;
         [StringLength(50)]
         [Column(TypeName = "varchar")]

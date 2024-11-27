@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" Height="Auto" Width="Auto">
-    <Grid>
+    <Grid Loaded="CreateVatLieu_Load">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -61,7 +61,7 @@
                             <Image Name="createImageVatLieu" Stretch="Uniform" VerticalAlignment="Center" 
                                    HorizontalAlignment="Center" Height="50"/>
                         </Border>
-                        <Button Name="UpLoad_Click" Width="100" HorizontalAlignment="Center" Margin="10,10" Background="#1e91e4" Click="UpLoad_Click">
+                        <Button Name="UpLoad" Width="100" HorizontalAlignment="Center" Margin="10,10" Background="#1e91e4" Click="UpLoad_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="/ImageCommon/upload-solid.png" Width="16" Height="16" Margin="0,0,5,0"/>
                                 <TextBlock Text="Tải ảnh" Foreground="White"/>

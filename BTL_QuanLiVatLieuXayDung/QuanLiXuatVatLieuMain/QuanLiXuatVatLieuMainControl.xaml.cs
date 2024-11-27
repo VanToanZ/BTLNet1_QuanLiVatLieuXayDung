@@ -66,6 +66,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiXuatVatLieuMain
                 TotalMoney = x.TotalMoney,
             }).ToListAsync();
             dataHoaDon.ItemsSource = hoaDonDtos;
+            UpdatePaginationButtons();
         }
 
         private async void HoaDon_Load(object sender, RoutedEventArgs e)
@@ -75,7 +76,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiXuatVatLieuMain
         private async Task LoadData()
         {
             dataHoaDon.ItemsSource = await GetNhapVatLieus();
-
+            UpdatePaginationButtons();
         }
         private async Task<List<HoaDonDto>> GetNhapVatLieus()
         {
@@ -129,6 +130,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiXuatVatLieuMain
                        _vatLieuRepository,
                        _detailHoaDonRepostiory));
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn để xem chi tiết.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

@@ -121,7 +121,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 Unit = selectedUnit!.Key,
                 UrlImage = filePath,
                 Status = nameof(EStatus.Active),
-                CreateBy = Properties.Settings.Default.UserName ?? "",
+                CreateBy = Application.Current.Properties["username"]?.ToString() ?? "",
             };
             _vatLieuRepository.Add(vatLieu);
             await _vatLieuRepository.SaveDbSetAsync();

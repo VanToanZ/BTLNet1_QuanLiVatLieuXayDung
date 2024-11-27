@@ -122,6 +122,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
                     LoadUserControl(new UpdateTaiKhoanControl(user, user.Id, _userRepository));
                 }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn tài khoản để sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         private async void xoa_Click(object sender, RoutedEventArgs e)
@@ -140,6 +145,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiTaiKhoanMain
                         await LoadData();
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn tài khoản để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

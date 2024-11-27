@@ -1,10 +1,10 @@
 ﻿using BTL_QuanLyVatLieuXayDung.Data;
-using BTL_QuanLyVatLieuXayDung.Data.Enum;
 using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using OfficeOpenXml;
 using System.Windows;
 
 namespace BTL_QuanLiVatLieuXayDung
@@ -15,10 +15,10 @@ namespace BTL_QuanLiVatLieuXayDung
     public partial class App : Application
     {
         public static IHost? AppHost { get; private set; }
-        private ServiceProvider serviceProvider;
         public App()
         {
-            const string connectionString = "Data Source=LAPTOP-BTD43VLF\\SQLEXPRESS01;Initial Catalog=QuanLyVatLieuXayDung_V5;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            const string connectionString = "Data Source=MSI;Initial Catalog=QuanLyVatLieuXayDung_V5;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
             AppHost = Host.CreateDefaultBuilder()
                  .ConfigureLogging(logging =>
                  {

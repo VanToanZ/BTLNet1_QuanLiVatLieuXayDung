@@ -196,6 +196,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                        _detailHoaDonRepostiory));
                 }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn vật liệu để sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
@@ -236,6 +241,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                     _hoaDonRepository,
                     _detailHoaDonRepostiory));
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn vật liệu để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         private async void Nhap_Click(object sender, RoutedEventArgs e)
@@ -261,7 +271,12 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                     return;
                 }
             }
-           
+            else
+            {
+                MessageBox.Show("Vui lòng chọn vật liệu để nhập.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
         }
 
         private async void Xuat_Click(object sender, RoutedEventArgs e)
@@ -315,16 +330,24 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                     }
                 }
             }
-
-            // Load the user control with the selected items
-           LoadUserControl(new XuatVatLieuControl(
-                vatLieus,
-                _vatLieuRepository,
-                _hoaDonRepository,
-                _detailHoaDonRepostiory,
-                _containerRepository,
-                _typeVatLieuRepository,
-                _nhapRepostiory));
+            if (vatLieus.Any())
+            {
+                // Load the user control with the selected items
+                LoadUserControl(new XuatVatLieuControl(
+                     vatLieus,
+                     _vatLieuRepository,
+                     _hoaDonRepository,
+                     _detailHoaDonRepostiory,
+                     _containerRepository,
+                     _typeVatLieuRepository,
+                     _nhapRepostiory));
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn vật liệu để xuất.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+           
         }
         private async void CheckBox_PreviewMouseUp(object sender, RoutedEventArgs e)
         {

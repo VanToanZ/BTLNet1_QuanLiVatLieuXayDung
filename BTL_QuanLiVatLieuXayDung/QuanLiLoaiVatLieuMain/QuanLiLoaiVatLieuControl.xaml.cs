@@ -53,6 +53,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
                 }
                 LoadUserControl(new CreateVatLieuControl(selectedTypeVatLieu.Id, _containerRepository, _vatLieuRepository, _typeVatLieuRepository));
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn loại vật liệu.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
         }
 
@@ -115,6 +120,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
                 {
                     LoadUserControl(new UpdateTypeVatLieuControl(typeVatLieu, typeVatLieu.Id, _typeVatLieuRepository, _vatLieuRepository, _containerRepository));
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn loại vật liệu để sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 
@@ -180,6 +190,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
                     MessageBox.Show("Xóa khu vực không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn loại vật liệu để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
 

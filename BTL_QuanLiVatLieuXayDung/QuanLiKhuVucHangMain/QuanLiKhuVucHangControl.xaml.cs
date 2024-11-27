@@ -123,6 +123,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain
                     LoadUserControl(new UpdateKhuVucHangControl(container, container.Id,_containerRepository, _vatLieuRepository));
                 }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn khu vực hàng để sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         private async void Xoa_Click(object sender, RoutedEventArgs e)
@@ -151,6 +156,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain
                     MessageBox.Show("Xóa khu vực không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }               
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn khu vực hàng để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
         }
         private async void CheckBox_PreviewMouseUp(object sender, RoutedEventArgs e)
