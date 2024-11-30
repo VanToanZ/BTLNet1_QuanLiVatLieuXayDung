@@ -95,10 +95,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
 
             totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
 
-            //// Chuyển đổi dữ liệu thành dạng DTO
-            //var typeVatLieus = await _typeVatLieuRepository
-            //    .FindByCondition(x => x.Status != nameof(EStatus.Delete))
-            //    .ToListAsync();
             var typeVatLieuDtos = typeVatLieus.Select(x => new TypeVatLieuDto()
             {
                 Id = x.Id,

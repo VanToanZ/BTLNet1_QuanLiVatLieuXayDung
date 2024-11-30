@@ -210,16 +210,18 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                         encoder.Save(stream);
                     }
 
-                    MessageBox.Show("Hình ảnh đã được lưu và URL đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                   // MessageBox.Show("Hình ảnh đã được lưu và URL đã được lưu vào cơ sở dữ liệu!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Lỗi lưu hình ảnh: {ex.Message}", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
             }
             else
             {
                 MessageBox.Show("Không có hình ảnh nào để lưu.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
             _vatLieu.NameVatLieu = name;
             _vatLieu.CodeVatLieu = code;
