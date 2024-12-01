@@ -3,42 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain"
         mc:Ignorable="d"
-        Title="Phần mềm quản lí vật liệu xây dựng" Height="450" Width="800">
-    <Grid x:Name="quanLiVatLieuXayDung" Loaded="quanLiVatLieuXayDung_Load">
-        <Menu VerticalAlignment="Top" Height="30">
-            <MenuItem x:Name="txtThongTinTaiKhoan" Header="Tài khoản" Click="thongTinTaiKhoan_Click" Height="32">
-                <MenuItem Header="Thông tin tài khoản" Click="InfoUser_Click" Height="32">
-                </MenuItem>
-                <MenuItem Header="Đăng xuất" Click="Logout_Click" Height="32">
-                </MenuItem>
+        Title="Phần mềm quản lí vật liệu xây dựng" 
+        Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!-- Layout structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Menu -->
+            <RowDefinition Height="*" />
+            <!-- Content -->
+        </Grid.RowDefinitions>
+
+        <!-- Menu Section -->
+        <Menu Grid.Row="0" VerticalAlignment="Top" Height="30">
+            <MenuItem x:Name="txtThongTinTaiKhoan" Header="Tài khoản" Click="thongTinTaiKhoan_Click">
+                <MenuItem Header="Thông tin tài khoản" Click="InfoUser_Click" />
+                <MenuItem Header="Đăng xuất" Click="Logout_Click" />
             </MenuItem>
-            <MenuItem x:Name="txtQuanLiTaiKhoan" Header="Quản lí tài khoản" Click="quanLiTaiKhoan_Click" Height="32">
+            <MenuItem x:Name="txtQuanLiTaiKhoan" Header="Quản lí tài khoản" Click="quanLiTaiKhoan_Click" />
+            <MenuItem x:Name="txtQuanLiKhoHang" Header="Quản lí kho hàng" Click="quanLiKhoHang_Click">
+                <MenuItem x:Name="txtQuanLiVatLieu" Header="Vật liệu" Click="vatLieu_Click" />
+                <MenuItem x:Name="txtQuanLiLoaiVatLieu" Header="Loại vật liệu" Click="loaiVatLieu_Click" />
+                <MenuItem x:Name="txtQuanLiKhuVuc" Header="Khu vực hàng" Click="khuVucHang_Click" />
             </MenuItem>
-            <MenuItem x:Name="txtQuanLiKhoHang" Header="Quản lí kho hàng" Click="quanLiKhoHang_Click" Height="32">
-                <MenuItem x:Name ="txtQuanLiVatLieu"  Header="Vật liệu" Click="vatLieu_Click" Height="32">
-                </MenuItem>
-                <MenuItem  x:Name ="txtQuanLiLoaiVatLieu" Header="Loại vật liệu" Click="loaiVatLieu_Click" Height="32">
-                </MenuItem>
-                <MenuItem x:Name ="txtQuanLiKhuVuc" Header="Khu vực hàng" Click="khuVucHang_Click" Height="32">
-                </MenuItem>
+            <MenuItem x:Name="txtQuanLiDon" Header="Quản lí đơn" Click="quanLiDon_Click">
+                <MenuItem x:Name="txtQuanLiNhap" Header="Đơn nhập" Click="donNhap_Click" />
+                <MenuItem x:Name="txtQuanLiXuat" Header="Hóa đơn xuất" Click="hoaDon_Click" />
             </MenuItem>
-            <MenuItem x:Name="txtQuanLiDon" Header="Quản lí đơn" Click="quanLiDon_Click" Height="32">
-                <MenuItem x:Name ="txtQuanLiNhap" Header="Đơn nhập" Click="donNhap_Click" Height="32">
-                </MenuItem>
-                <MenuItem x:Name ="txtQuanLiXuat" Header="Hóa đơn xuất" Click="hoaDon_Click" Height="32">
-                </MenuItem>
+            <MenuItem x:Name="txtQuanLiBaoCao" Header="Quản lí báo cáo" Click="quanLiBaoCao_Click">
+                <MenuItem x:Name="txtReportNhap" Header="Báo cáo nhập" Click="reportNhap_Click" />
+                <MenuItem x:Name="txtReportXuat" Header="Báo cáo xuất" Click="reportXuat_Click" />
             </MenuItem>
-            <MenuItem x:Name="txtQuanLiBaoCao" Header="Quản lí báo cáo" Click="quanLiBaoCao_Click" Height="32">
-                <MenuItem x:Name ="txtReportNhap" Header="Báo cáo nhập" Click="reportNhap_Click" Height="32">
-                </MenuItem>
-                <MenuItem x:Name ="txtReportXuat" Header="Báo cáo xuất" Click="reportXuat_Click" Height="32">
-                </MenuItem>
-            </MenuItem>
-            <MenuItem x:Name="txtHeThong" Header="Hệ thống" Click="heThong_Click" Height="32">
-            </MenuItem>
+            <MenuItem x:Name="txtHeThong" Header="Hệ thống" Click="heThong_Click" />
         </Menu>
-        <ContentControl x:Name="MainContent" VerticalAlignment="Bottom" Height="434" />
+
+        <!-- Main Content Section -->
+        <Grid Grid.Row="1">
+            <ContentControl x:Name="MainContent" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Top" 
+                            Margin="0,20,0,0" />
+        </Grid>
     </Grid>
 </Window>

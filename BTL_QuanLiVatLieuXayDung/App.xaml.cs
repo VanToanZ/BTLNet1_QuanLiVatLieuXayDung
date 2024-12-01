@@ -18,8 +18,7 @@ namespace BTL_QuanLiVatLieuXayDung
         public App()
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            const string connectionString = "Data Source=MSI;Initial Catalog=QuanLyVatLieuXayDung_V5;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True";
-            AppHost = Host.CreateDefaultBuilder()
+            const string connectionString = "Data Source=LAPTOP-BTD43VLF\\SQLEXPRESS01;Initial Catalog=QuanLyVatLieuXayDung;Integrated Security=True;MultipleActiveResultSets=True;TrustServerCertificate=True"; AppHost = Host.CreateDefaultBuilder()
                  .ConfigureLogging(logging =>
                  {
                      logging.ClearProviders(); // Clear default logging providers

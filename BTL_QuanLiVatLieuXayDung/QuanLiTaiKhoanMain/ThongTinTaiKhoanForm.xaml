@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" d:DesignWidth="900" Height="448">
-    <Grid Margin="20">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
@@ -13,8 +13,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Margin="5" Grid.Column="0"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 MaxWidth="200" MaxHeight="200">
-            <Image x:Name="imageTaiKhoan" 
-                   Stretch="UniformToFill"/>
+            <Image x:Name="imageTaiKhoan" Stretch="UniformToFill"/>
         </Border>
 
         <StackPanel Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center">
