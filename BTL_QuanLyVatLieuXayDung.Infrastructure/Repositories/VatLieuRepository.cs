@@ -32,8 +32,8 @@ namespace BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories
 
         public async Task<bool> ExistTypeVatLieuByCodeAndDiffrentId(string code, string id)
         {
-            return await _context.TypeVatLieu
-                .AnyAsync(x => x.CodeTypeVatLieu.Equals(code)
+            return await _context.VatLieu
+                .AnyAsync(x => x.CodeVatLieu.Equals(code)
                                && x.Id != id
                                && x.Status != nameof(EStatus.Delete));
         }
