@@ -5,8 +5,6 @@ using BTL_QuanLyVatLieuXayDung.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
@@ -21,8 +19,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
     public partial class UpdateVatLieuControl : UserControl
     {
         private string imageDirectory = @"Images\";
-        private bool isLoading = false;
-        string _idVatLieu;
         VatLieu _vatLieu;
         private readonly IContainerRepository _containerRepository;
         private readonly IVatLieuRepository _vatLieuRepository;
@@ -31,7 +27,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
         private readonly IHoaDonRepository _hoaDonRepository;
         private readonly IDetailHoaDonRepostiory _detailHoaDonRepostiory;
         public UpdateVatLieuControl(
-            string idVatLieu,
              VatLieu vatLieu,
              IContainerRepository containerRepository,
              IVatLieuRepository vatLieuRepository,
@@ -41,7 +36,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
              IDetailHoaDonRepostiory detailHoaDonRepostiory)
         {
             InitializeComponent();
-            _idVatLieu = idVatLieu;
             _vatLieu = vatLieu;
             _containerRepository = containerRepository;
             _vatLieuRepository = vatLieuRepository;
@@ -51,7 +45,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
             _detailHoaDonRepostiory = detailHoaDonRepostiory;
         }
 
-        private async void UpLoad_Click(object sender, RoutedEventArgs e)
+        private void UpLoad_Click(object sender, RoutedEventArgs e)
         {
             string imageLocation = "";
             try

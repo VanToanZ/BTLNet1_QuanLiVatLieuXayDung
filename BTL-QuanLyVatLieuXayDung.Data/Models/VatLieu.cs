@@ -1,6 +1,4 @@
 ﻿using BTL_QuanLyVatLieuXayDung.Data.Common;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -36,8 +34,8 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         public double Price { get; set; }
         [Required]
         [StringLength(50)]
-        [Column(TypeName = "varchar")]
-        public string Unit { get; set; }
+        [Column(TypeName = "nvarchar")]
+        public string Unit { get; set; } = null!;
         [Column(TypeName = "text")]
         public string? UrlImage { get; set; }
         [Required]

@@ -15,7 +15,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Models
         }
         [Required]
         [StringLength(50)]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "nvarchar")]
         public string NameTypeVatLieu { get; set; } = null!;
         [Required]
         [StringLength(50)]

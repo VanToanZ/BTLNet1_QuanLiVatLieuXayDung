@@ -14,8 +14,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
     /// 
     public partial class NhapVatLieuControl : UserControl
     {
-        private bool isLoading = false;
-        string _idVatLieu;
         VatLieu _vatLieu;
         private readonly IContainerRepository _containerRepository;
         private readonly IVatLieuRepository _vatLieuRepository;
@@ -24,7 +22,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
         private readonly IHoaDonRepository _hoaDonRepository;
         private readonly IDetailHoaDonRepostiory _detailHoaDonRepostiory;
         public NhapVatLieuControl(
-            string idVatLieu,
             VatLieu vatLieu,
             IContainerRepository containerRepository,
             IVatLieuRepository vatLieuRepository,
@@ -34,7 +31,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
             IDetailHoaDonRepostiory detailHoaDonRepostiory)
         {
             InitializeComponent();
-            _idVatLieu = idVatLieu;
             _vatLieu = vatLieu;
             _containerRepository = containerRepository;
             _vatLieuRepository = vatLieuRepository;

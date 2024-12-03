@@ -186,7 +186,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 if (vatLieu != null)
                 {
                     LoadUserControl(new UpdateVatLieuControl(
-                        vatLieu.Id,
                         vatLieu,
                        _containerRepository,
                        _vatLieuRepository,
@@ -256,7 +255,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 if (vatLieu != null && vatLieu.Status.Equals(nameof(EStatus.Active)))
                 {
                     LoadUserControl(new NhapVatLieuControl(
-                        vatLieu.Id,
                         vatLieu,
                        _containerRepository,
                        _vatLieuRepository,
