@@ -43,7 +43,7 @@
                     </StackPanel>
 
                     <!-- Chart Display (Row 1) -->
-                    <chart:CartesianChart Name="ChartReport" Grid.Row="1" Margin="20,10,20,20">
+                    <chart:CartesianChart Name="ChartReport" MinHeight ="400" Grid.Row="1" Margin="20,10,20,20">
                         <chart:CartesianChart.Series>
                             <!-- ColumnSeries for Quantity over Time -->
                             <chart:ColumnSeries Title="Tổng xuất"
@@ -61,8 +61,15 @@
                         </chart:CartesianChart.Series>
                         <!-- X-axis labels will be bound to the VatLieu names -->
                         <chart:CartesianChart.AxisX>
-                            <chart:Axis Title="Báo cáo nhập vật liệu" Labels="{Binding Labels}" />
+                            <chart:Axis  Title="Báo cáo xuất vật liệu" Labels="{Binding Labels}" />
                         </chart:CartesianChart.AxisX>
+                        <chart:CartesianChart.AxisY>
+                            <chart:Axis Title="Số lượng xuất"
+                            MinValue="0"
+                            MaxValue="{Binding MaxYValue}">
+                                
+                            </chart:Axis>                           
+                      </chart:CartesianChart.AxisY>
                     </chart:CartesianChart>
                 </Grid>
             </TabItem>

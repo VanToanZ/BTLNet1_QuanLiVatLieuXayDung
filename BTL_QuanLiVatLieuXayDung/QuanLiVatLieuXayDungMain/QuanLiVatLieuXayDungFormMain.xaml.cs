@@ -73,6 +73,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
                 txtQuanLiLoaiVatLieu,
                 txtQuanLiKhuVuc,
             });
+            SaveOriginalStates();
         }
 
         private void quanLiVatLieuXayDung_Load(object sender, RoutedEventArgs e)
@@ -83,7 +84,6 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
                 txtHeThong.Visibility = Visibility.Collapsed;
                 txtQuanLiTaiKhoan.Visibility = Visibility.Collapsed;
             }
-            SaveOriginalStates();
             LoadUserControl(new ThongTinTaiKhoanForm(_user));
         }
         private void Logout_Click(object sender, RoutedEventArgs e)
@@ -117,7 +117,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
 
             if (clickedItem != null)
             {
-                SelectMenuItem(clickedItem);  // Gọi hàm SelectMenuItem để thay đổi màu sắc, viền cho mục đã chọn
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
             }
             LoadUserControl(new ThongTinTaiKhoanForm(_user));
         }
@@ -127,11 +128,9 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
 
             if (clickedItem != null)
             {
-                SelectMenuItem(clickedItem);  // Gọi hàm SelectMenuItem để thay đổi màu sắc, viền cho mục đã chọn
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
             }
-            txtQuanLiTaiKhoan.Foreground = new SolidColorBrush(Colors.Red); // Change text color
-            txtQuanLiTaiKhoan.BorderBrush = new SolidColorBrush(Colors.Red); // Add red border
-            txtQuanLiTaiKhoan.BorderThickness = new Thickness(2);
             LoadUserControl(new QuanLiTaiKhoanMainControl(_userRepository));
         }
         private void quanLiKhoHang_Click(object sender, RoutedEventArgs e)
@@ -140,23 +139,52 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
 
             if (clickedItem != null)
             {
-                SelectMenuItem(clickedItem);  // Gọi hàm SelectMenuItem để thay đổi màu sắc, viền cho mục đã chọn
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
             }
+            // Load user control nếu có
         }
         private void khuVucHang_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
             LoadUserControl(new QuanLiKhuVucHangControl(_containerRepository, _vatLieuRepository));
         }
         private void reportNhap_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
             LoadUserControl(new ReportNhapVatLieuMainControl(_nhapRepostiory));
         }
         private void reportXuat_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
             LoadUserControl(new ReportXuatVatLieuMainControl(_detailHoaDonRepostiory, _hoaDonRepository));
         }
         private void loaiVatLieu_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
             LoadUserControl(new QuanLiLoaiVatLieuControl(_typeVatLieuRepository,_vatLieuRepository ,_containerRepository)); ;
         }
         private void vatLieu_Click(object sender, RoutedEventArgs e)
@@ -165,7 +193,8 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
 
             if (clickedItem != null)
             {
-                SelectMenuItem(clickedItem);  // Gọi hàm SelectMenuItem để thay đổi màu sắc, viền cho mục đã chọn
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
             }
             LoadUserControl(new QuanLiVatLieuMainControl(
               _containerRepository,
@@ -181,23 +210,49 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
 
             if (clickedItem != null)
             {
-                SelectMenuItem(clickedItem);  // Gọi hàm SelectMenuItem để thay đổi màu sắc, viền cho mục đã chọn
-            }          
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
         }
         private void donNhap_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
             LoadUserControl(new QuanLiNhapVatLieuMainControl(_vatLieuRepository, _nhapRepostiory));
         }
         private void hoaDon_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
             LoadUserControl(new QuanLiXuatVatLieuMainControl(_hoaDonRepository,_vatLieuRepository, _detailHoaDonRepostiory));
         }
         private void quanLiBaoCao_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
 
+            if (clickedItem != null)
+            {
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }
         }
         private void heThong_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem clickedItem = sender as MenuItem;
+
+            if (clickedItem != null)
+            {
+                ResetAllMenuItems(); // Đặt lại trạng thái của tất cả các MenuItem
+                SelectMenuItem(clickedItem);  // Chọn và thay đổi màu sắc cho mục đã chọn
+            }   
             LoadUserControl(new QuanLiHeThongMainControl(_configRepository));
         }
 
@@ -226,6 +281,32 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
                 );
             }
         }
+        private void SelectMenuItem(MenuItem selectedMenuItem)
+        {
+            // Thay đổi trạng thái của mục được chọn (MenuItem chính)
+            selectedMenuItem.Foreground = new SolidColorBrush(Colors.Red);  // Màu chữ đỏ
+            selectedMenuItem.BorderBrush = new SolidColorBrush(Colors.Red);  // Viền đỏ
+            selectedMenuItem.BorderThickness = new Thickness(2);  // Độ dày viền = 2
+            selectedMenuItem.FontWeight = FontWeights.Bold;  // In đậm font chữ
+        }
+        private void MenuItem_SubmenuOpened(object sender, RoutedEventArgs e)
+        {
+            MenuItem openedSubMenuItem = sender as MenuItem;
+
+            if (openedSubMenuItem != null)
+            {
+                // Đặt lại màu cho tất cả các mục menu
+                ResetAllMenuItems();
+
+                // Thay đổi màu cho submenu đang mở
+                openedSubMenuItem.Foreground = new SolidColorBrush(Colors.Red);  // Màu chữ đỏ
+                openedSubMenuItem.BorderBrush = new SolidColorBrush(Colors.Red);  // Viền đỏ
+                openedSubMenuItem.BorderThickness = new Thickness(2);  // Độ dày viền = 2
+                openedSubMenuItem.FontWeight = FontWeights.Bold;  // In đậm font chữ
+            }
+        }
+
+
         private void ResetAllMenuItems()
         {
             foreach (var menuItem in allMenuItems)
@@ -235,20 +316,19 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
                     menuItem.Foreground = originalStates[menuItem].originalColor;
                     menuItem.BorderBrush = originalStates[menuItem].originalBorderColor;
                     menuItem.BorderThickness = originalStates[menuItem].originalBorderThickness;
+                    menuItem.FontWeight = FontWeights.Normal;  // Đặt lại font chữ về bình thường
+                }
+                if (menuItem.HasItems)
+                {
+                    foreach (MenuItem subMenuItem in menuItem.Items)
+                    {
+                        subMenuItem.Foreground = originalStates[menuItem].originalColor;
+                        subMenuItem.BorderBrush = originalStates[menuItem].originalBorderColor;
+                        subMenuItem.BorderThickness = originalStates[menuItem].originalBorderThickness;
+                        subMenuItem.FontWeight = FontWeights.Normal;
+                    }
                 }
             }
-        }
-
-        // Hàm này sẽ thay đổi trạng thái của mục được chọn
-        private void SelectMenuItem(MenuItem selectedMenuItem)
-        {
-            // Đầu tiên, reset lại tất cả các mục về trạng thái ban đầu
-            ResetAllMenuItems();
-
-            // Sau đó, thay đổi trạng thái của mục được chọn
-            selectedMenuItem.Foreground = new SolidColorBrush(Colors.Red);  // Màu chữ đỏ
-            selectedMenuItem.BorderBrush = new SolidColorBrush(Colors.Red);  // Viền đỏ
-            selectedMenuItem.BorderThickness = new Thickness(2);  // Độ dày viền = 2
         }
     }
 }
