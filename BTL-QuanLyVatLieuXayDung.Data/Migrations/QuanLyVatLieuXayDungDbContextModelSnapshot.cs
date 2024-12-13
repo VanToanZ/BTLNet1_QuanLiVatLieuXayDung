@@ -53,14 +53,14 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "01JE6F25NKT21PA1W4Q5YCY1Q0",
+                            Id = "01JEB667QZ8WAHRTTA1KZBBKT7",
                             Group = "EmailServer",
                             ParamName = "SenderEmail",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JE6F25NK7XV0PA8TR3NVAHBB",
+                            Id = "01JEB667QZXSDFGKHPKD01S942",
                             Group = "EmailServer",
                             ParamName = "SenderName",
                             ParamValue = "Bộ phận một cửa",
@@ -68,7 +68,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JE6F25NKVMNVZES3KDH489HM",
+                            Id = "01JEB667QZC4XE831B0VG1QBNH",
                             Group = "EmailServer",
                             ParamName = "SenderPort",
                             ParamValue = "587",
@@ -76,7 +76,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JE6F25NK1MDW7SK6SQJGQENC",
+                            Id = "01JEB667QZBEM9KFC88EZXFPHE",
                             Group = "EmailServer",
                             ParamName = "SenderHost",
                             ParamValue = "smtp.gmail.com",
@@ -84,7 +84,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JE6F25NKG26TCEZSN8P76Q8J",
+                            Id = "01JEB667QZ46DE99HS5P863FCB",
                             Group = "EmailServer",
                             ParamName = "SenderPassword",
                             ParamValue = "1aK%2es%",
@@ -92,21 +92,21 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JE6F25NKTBD8P0KME8VWN4A1",
+                            Id = "01JEB667QZHRGZTDSQ3RMDXMY6",
                             Group = "System",
                             ParamName = "SysStatus",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JE6F25NKN1YQRQKWEXPHM38H",
+                            Id = "01JEB667QZ34FN00X1MQSHBK0T",
                             Group = "System",
                             ParamName = "SysMessage",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JE6F25NKSK4NQHGFY5BS413J",
+                            Id = "01JEB667QZ0MXNKYJKV9VQQFR0",
                             Group = "Information",
                             ParamName = "UniversityName",
                             ParamValue = "Trường Đại học Mỏ - Địa chất",
@@ -114,22 +114,14 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JE6F25NKNTEGP1GWBER7Q7TA",
-                            Group = "Information",
-                            ParamName = "HocKy",
-                            ParamValue = "1",
-                            Status = "Active"
-                        },
-                        new
-                        {
-                            Id = "01JE6F25NK1A6CW463G5NWGWWN",
+                            Id = "01JEB667QZP80NWWXXGXXQNTE9",
                             Group = "Information",
                             ParamName = "EmailContact",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JE6F25NKEN9C2GFP1Z0V2V3C",
+                            Id = "01JEB667QZ61F97HCF7N4KWW4R",
                             Group = "Information",
                             ParamName = "AddressContact",
                             Status = "Active"
@@ -452,7 +444,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "01JE6F25NKR5D5RDHCS6VGDB7F",
+                            Id = "01JEB667QZP31VVAGQXK7X1RWC",
                             Address = "Adress",
                             CCCD = "1234567890",
                             Email = "Address@email.com",

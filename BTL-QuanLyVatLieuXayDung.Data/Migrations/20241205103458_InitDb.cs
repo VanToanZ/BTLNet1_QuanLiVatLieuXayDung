@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
 {
     /// <inheritdoc />
@@ -17,7 +19,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ParamName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
-                    ParamValue = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    ParamValue = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     Group = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Status = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                 },
@@ -66,7 +68,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    NameTypeVatLieu = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    NameTypeVatLieu = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CodeTypeVatLieu = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     UrlImage = table.Column<string>(type: "text", nullable: false),
                     CreateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
@@ -109,7 +111,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     ContainerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Quantity = table.Column<double>(type: "float", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    Unit = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Unit = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     UrlImage = table.Column<string>(type: "text", nullable: true),
                     CreateBy = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     CreateAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -167,7 +169,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Quantity = table.Column<float>(type: "real", nullable: false),
+                    Quantity = table.Column<double>(type: "float", nullable: false),
                     VatLieuId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     TotalMoney = table.Column<double>(type: "float", nullable: false),
@@ -189,9 +191,26 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Config",
+                columns: new[] { "Id", "Group", "ParamName", "ParamValue", "Status" },
+                values: new object[,]
+                {
+                    { "01JEB667QZ0MXNKYJKV9VQQFR0", "Information", "UniversityName", "Trường Đại học Mỏ - Địa chất", "Active" },
+                    { "01JEB667QZ34FN00X1MQSHBK0T", "System", "SysMessage", null, "Active" },
+                    { "01JEB667QZ46DE99HS5P863FCB", "EmailServer", "SenderPassword", "1aK%2es%", "Active" },
+                    { "01JEB667QZ61F97HCF7N4KWW4R", "Information", "AddressContact", null, "Active" },
+                    { "01JEB667QZ8WAHRTTA1KZBBKT7", "EmailServer", "SenderEmail", null, "Active" },
+                    { "01JEB667QZBEM9KFC88EZXFPHE", "EmailServer", "SenderHost", "smtp.gmail.com", "Active" },
+                    { "01JEB667QZC4XE831B0VG1QBNH", "EmailServer", "SenderPort", "587", "Active" },
+                    { "01JEB667QZHRGZTDSQ3RMDXMY6", "System", "SysStatus", null, "Active" },
+                    { "01JEB667QZP80NWWXXGXXQNTE9", "Information", "EmailContact", null, "Active" },
+                    { "01JEB667QZXSDFGKHPKD01S942", "EmailServer", "SenderName", "Bộ phận một cửa", "Active" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "User",
                 columns: new[] { "Id", "Address", "CCCD", "Email", "FullName", "Password", "Role", "Status", "UrlImage", "UserName" },
-                values: new object[] { "01JC0YZTBB78RPR00F0XS2DJ8Y", "Adress", "1234567890", "Address@email.com", "Admin", "123", "Admin", "Active", null, "admin" });
+                values: new object[] { "01JEB667QZP31VVAGQXK7X1RWC", "Adress", "1234567890", "Address@email.com", "Admin", "123", "Admin", "Active", null, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_DetailHoaDon_HoaDonId",

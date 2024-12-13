@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
 {
     [DbContext(typeof(QuanLyVatLieuXayDungDbContext))]
-    [Migration("20241122075457_UpdateColumQuanityToTypeDouble")]
-    partial class UpdateColumQuanityToTypeDouble
+    [Migration("20241205103458_InitDb")]
+    partial class InitDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,14 +56,14 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "01JD9DVWSPW2M8R27MAM4GXN0Z",
+                            Id = "01JEB667QZ8WAHRTTA1KZBBKT7",
                             Group = "EmailServer",
                             ParamName = "SenderEmail",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JD9DVWSPNEV5M78AR5GXRJ11",
+                            Id = "01JEB667QZXSDFGKHPKD01S942",
                             Group = "EmailServer",
                             ParamName = "SenderName",
                             ParamValue = "Bộ phận một cửa",
@@ -71,7 +71,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JD9DVWSP0ASDPK2MDPVJJG1Q",
+                            Id = "01JEB667QZC4XE831B0VG1QBNH",
                             Group = "EmailServer",
                             ParamName = "SenderPort",
                             ParamValue = "587",
@@ -79,7 +79,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JD9DVWSP9EC1A4YT0AMKVFRR",
+                            Id = "01JEB667QZBEM9KFC88EZXFPHE",
                             Group = "EmailServer",
                             ParamName = "SenderHost",
                             ParamValue = "smtp.gmail.com",
@@ -87,7 +87,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JD9DVWSPB5RFFCJRV7N8GQE6",
+                            Id = "01JEB667QZ46DE99HS5P863FCB",
                             Group = "EmailServer",
                             ParamName = "SenderPassword",
                             ParamValue = "1aK%2es%",
@@ -95,21 +95,21 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JD9DVWSPJD4X6KTA7AJHEYMY",
+                            Id = "01JEB667QZHRGZTDSQ3RMDXMY6",
                             Group = "System",
                             ParamName = "SysStatus",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JD9DVWSPG08AGSFKFZ9HY1SK",
+                            Id = "01JEB667QZ34FN00X1MQSHBK0T",
                             Group = "System",
                             ParamName = "SysMessage",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JD9DVWSPE28P934JAR9ZVSER",
+                            Id = "01JEB667QZ0MXNKYJKV9VQQFR0",
                             Group = "Information",
                             ParamName = "UniversityName",
                             ParamValue = "Trường Đại học Mỏ - Địa chất",
@@ -117,22 +117,14 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                         },
                         new
                         {
-                            Id = "01JD9DVWSP7DA1YWD6QXFM2D4D",
-                            Group = "Information",
-                            ParamName = "HocKy",
-                            ParamValue = "1",
-                            Status = "Active"
-                        },
-                        new
-                        {
-                            Id = "01JD9DVWSPW2RW0EACS3Q4KRCR",
+                            Id = "01JEB667QZP80NWWXXGXXQNTE9",
                             Group = "Information",
                             ParamName = "EmailContact",
                             Status = "Active"
                         },
                         new
                         {
-                            Id = "01JD9DVWSPNKRKYJ63F1DWK1ZG",
+                            Id = "01JEB667QZ61F97HCF7N4KWW4R",
                             Group = "Information",
                             ParamName = "AddressContact",
                             Status = "Active"
@@ -314,7 +306,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.Property<string>("NameTypeVatLieu")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("varchar");
+                        .HasColumnType("nvarchar");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -379,7 +371,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.Property<string>("Unit")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("varchar");
+                        .HasColumnType("nvarchar");
 
                     b.Property<DateTime?>("UpdateAt")
                         .HasColumnType("datetime2");
@@ -455,7 +447,7 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "01JD9DVWSPRCMJE7A2T6QZPCZS",
+                            Id = "01JEB667QZP31VVAGQXK7X1RWC",
                             Address = "Adress",
                             CCCD = "1234567890",
                             Email = "Address@email.com",

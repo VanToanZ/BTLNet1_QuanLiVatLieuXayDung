@@ -22,7 +22,6 @@ namespace BTL_QuanLyVatLieuXayDung.Data.Common.Seeds
                 CreateConfig("SysStatus", null, EGroupConfig.System),
                 CreateConfig("SysMessage", null, EGroupConfig.System),
                 CreateConfig("UniversityName", "Trường Đại học Mỏ - Địa chất", EGroupConfig.Information),
-                CreateConfig("HocKy", "1", EGroupConfig.Information),
                 CreateConfig("EmailContact", null, EGroupConfig.Information),
                 CreateConfig("AddressContact", null, EGroupConfig.Information)
             };
