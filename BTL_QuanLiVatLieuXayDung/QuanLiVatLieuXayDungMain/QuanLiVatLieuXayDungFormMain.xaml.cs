@@ -73,6 +73,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
                 txtQuanLiLoaiVatLieu,
                 txtQuanLiKhuVuc,
             });
+            LoadUserControl(new ThongTinTaiKhoanForm(_user));
             SaveOriginalStates();
         }
 
