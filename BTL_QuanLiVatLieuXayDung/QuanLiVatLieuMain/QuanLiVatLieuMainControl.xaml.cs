@@ -204,24 +204,27 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
 
         private async void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataVatLieu.SelectedItem is VatLieuDto selectedUser)
+            if (dataVatLieu.SelectedItem is VatLieuDto vatLieuDto)
             {
-                var vatLieu = await _vatLieuRepository.GetByIdAsync(selectedUser.Id);
+                var vatLieu = await _vatLieuRepository.GetByIdAsync(vatLieuDto.Id);
                 if (vatLieu != null)
                 {
                     var result = MessageBox.Show("Bạn có thật sự muốn xóa vật liệu này?", "Thông báo", MessageBoxButton.OKCancel);
                     if (result == MessageBoxResult.OK)
-                    {
-                        try
+                    { 
+                        var nhapByVatLieuId = await _nhapRepostiory.FindByCondition(x => x.VatLieuId.Equals(vatLieuDto.Id)).FirstOrDefaultAsync();
+                        var xuatByVatLieuId = await _detailHoaDonRepostiory.FindByCondition(x => x.VatLieuId.Equals(vatLieuDto.Id)).FirstOrDefaultAsync();
+                        if (nhapByVatLieuId != null || xuatByVatLieuId != null)
+                        {
+                            vatLieu.Status = nameof(EStatus.Delete);
+                            _vatLieuRepository.Update(vatLieu);
+                            await _vatLieuRepository.SaveDbSetAsync();
+                        }
+                        else
                         {
                             _vatLieuRepository.Delete(vatLieu);
                             await _vatLieuRepository.SaveDbSetAsync();
-                        }
-                        catch (Exception)
-                        {
-                            vatLieu.Status = nameof(EStatus.Delete);
-                            throw;
-                        }
+                        }                       
 
                         MessageBox.Show("Xóa vật liệu thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                         await LoadData();
@@ -230,7 +233,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuMain
                 else
                 {
                     MessageBox.Show("Xóa vật liệu không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                    return;
                 }
                 LoadUserControl(new QuanLiVatLieuMainControl(
                     _containerRepository,

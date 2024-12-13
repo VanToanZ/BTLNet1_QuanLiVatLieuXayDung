@@ -164,10 +164,11 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
         {
             if (dataTypeVatLieu.SelectedItem is TypeVatLieuDto selectedContainer)
             {
-                var vatLieu = await _vatLieuRepository.ExistVatLieuByTypeContainerId(selectedContainer.Id);
+                var vatLieu = await _vatLieuRepository.ExistVatLieuByTypeVatLieuId(selectedContainer.Id);
                 if (vatLieu)
                 {
                     MessageBox.Show("Không được xóa loại vật liệu này vì đang được sử dụng.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
                 var typeVatLieu = await _typeVatLieuRepository.GetByIdAsync(selectedContainer.Id);
                 if (typeVatLieu != null)
@@ -184,7 +185,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiLoaiVatLieuMain
                 else
                 {
                     MessageBox.Show("Xóa khu vực không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                    return;
                 }
             }
             else

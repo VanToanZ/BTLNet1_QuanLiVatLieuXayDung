@@ -138,6 +138,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain
                 if (vatLieu)
                 {
                     MessageBox.Show("Không được xóa khu vực này vì đang được sử dụng.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
                 }
                 var container = await _containerRepository.GetByIdAsync(selectedContainer.Id);
                 if (container != null)
@@ -154,7 +155,7 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiKhuVucHangMain
                 else
                 {
                     MessageBox.Show("Xóa khu vực không thành công.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                    return;
                 }               
             }
             else

@@ -54,7 +54,7 @@
                                             DataLabels="True">
                                 <chart:ColumnSeries.DataLabelsTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="Số lượng nhập" Foreground="Black" FontSize="12"/>
+                                        <TextBlock Text="Số lượng xuất" Foreground="Black" FontSize="12"/>
                                     </DataTemplate>
                                 </chart:ColumnSeries.DataLabelsTemplate>
                             </chart:ColumnSeries>
