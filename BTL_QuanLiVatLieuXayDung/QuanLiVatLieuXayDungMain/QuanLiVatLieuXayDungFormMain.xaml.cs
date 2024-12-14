@@ -81,9 +81,9 @@ namespace BTL_QuanLiVatLieuXayDung.QuanLiVatLieuXayDungMain
         {
             if (_role.Equals(nameof(ETypeUser.NhanVien)))
             {
-                txtQuanLiBaoCao.Visibility = Visibility.Collapsed;
-                txtHeThong.Visibility = Visibility.Collapsed;
-                txtQuanLiTaiKhoan.Visibility = Visibility.Collapsed;
+                txtQuanLiBaoCao.Visibility = Visibility.Hidden;
+                txtHeThong.Visibility = Visibility.Hidden;
+                txtQuanLiTaiKhoan.Visibility = Visibility.Hidden;
             }
             LoadUserControl(new ThongTinTaiKhoanForm(_user));
         }

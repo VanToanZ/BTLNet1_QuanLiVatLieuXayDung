@@ -7,7 +7,7 @@
         Title="Phần mềm quản lí vật liệu xây dựng" 
         Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
-    <Grid>
+    <Grid Loaded="quanLiVatLieuXayDung_Load">
         <!-- Layout structure -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
